@@ -57,6 +57,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Realm" Version="11.7.0" />
 	</ItemGroup>
 
 	<!-- 
@@ -83,6 +84,10 @@
 		<None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 		<Compile Remove="**\Windows\**\*.cs" />
 		<None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Views\" />
+	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 </Project>
