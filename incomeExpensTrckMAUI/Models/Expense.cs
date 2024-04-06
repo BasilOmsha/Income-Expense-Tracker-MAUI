@@ -1,5 +1,4 @@
-﻿using Contacts;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using Realms;
 
 namespace incomeExpensTrckMAUI.Models
@@ -17,7 +16,7 @@ namespace incomeExpensTrckMAUI.Models
         public double Amount { get; set; }
 
         [MapTo("category")]
-        public IList<ExpenseCategory> Category { get; } = null!;
+        public IList<ExpenseCategory> Category { get; } = null!; // this is implementing a list of ExpenseCategory that has its own properties
 
         [MapTo("account")]
         public IList<Account> Account { get; } = null!;
