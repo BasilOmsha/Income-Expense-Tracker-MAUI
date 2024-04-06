@@ -1,4 +1,6 @@
-﻿namespace incomeExpensTrckMAUI
+﻿using incomeExpensTrckMAUI.ViewModels;
+
+namespace incomeExpensTrckMAUI
 {
     public partial class MainPage : ContentPage
     {
@@ -7,6 +9,7 @@
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new MainPageViewModel(); // Set the binding context to MainPageViewModel
         }
 
         //private void OnCounterClicked(object sender, EventArgs e)
