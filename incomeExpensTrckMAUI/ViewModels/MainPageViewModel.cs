@@ -14,7 +14,6 @@ namespace incomeExpensTrckMAUI.ViewModels
             Title = "Main Page";
             GenerateDummyExpenses();
             GenerateDummyIncomes();
-
         }
 
         private void GenerateDummyExpenses()

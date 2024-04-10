@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:incomeExpensTrckMAUI.Models"
+             xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Components.ExpenseListComps.Styles"
+             xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels"
+             x:Class="incomeExpensTrckMAUI.Components.ExpenseListComps.ExpenseListComponent">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <styles:ExpenseListCompStyles />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <CollectionView ItemsSource="{Binding}" Style="{StaticResource CollectionViewStyle}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Expense">
+                <Grid VerticalOptions="StartAndExpand" Style="{StaticResource ItemsGridStyle}">
+                    <Label BackgroundColor="Red" Grid.Row="0" Grid.Column="0" Text="{Binding Date, StringFormat='Date: {0:dd.MM.yyyy}'}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Category[0].Name, StringFormat='Catagory: {0:C}'}" />
+                    <Label Grid.Row="2" Grid.Column="0" Text="{Binding Account[0].Name, StringFormat='Account: {0:C}'}" />
+                    <Label Grid.Row="1" Grid.Column="2" Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
+                    <!--<Label Grid.Row="2" Grid.Column="0" Text="{Binding Description, StringFormat='Description: {0:C}'}" />
+                    <Label Grid.Row="3" Grid.Column="0" Text="{Binding Note, StringFormat='Note: {0:C}'}" />-->
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentView>

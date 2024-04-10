@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:incomeExpensTrckMAUI"
     xmlns:view="clr-namespace:incomeExpensTrckMAUI.Views"
-    xmlns:page="clr-namespace:incomeExpensTrckMAUI.Pages"
     Shell.FlyoutBehavior="Disabled"
     Shell.TabBarIsVisible="True"
     Shell.NavBarIsVisible="True"
@@ -39,7 +38,7 @@
          />
         <ShellContent
             Title="ExpensePage"
-            ContentTemplate="{DataTemplate page:ExpensePage}"
+            ContentTemplate="{DataTemplate view:ExpensePage}"
             Route="ExpensePage"
             Icon="dotnet_bot.png"
         />

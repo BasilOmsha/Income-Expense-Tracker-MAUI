@@ -4,16 +4,17 @@ namespace incomeExpensTrckMAUI.Views;
 
 public partial class IncomeView : ContentView
 {
-    private readonly IncomeViewModel incomeViewModel;
+    private readonly IncomeViewModel incomeViewModel = new();
 
     public IncomeView()
     {
         InitializeComponent();
-    }
-
-    public IncomeView(IncomeViewModel incomeViewModel)
-    {
-        this.incomeViewModel = incomeViewModel;
         BindingContext = incomeViewModel;
     }
+
+    //public IncomeView(IncomeViewModel incomeViewModel)
+    //{
+    //    this.incomeViewModel = incomeViewModel;
+    //    BindingContext = incomeViewModel;
+    //}
 }

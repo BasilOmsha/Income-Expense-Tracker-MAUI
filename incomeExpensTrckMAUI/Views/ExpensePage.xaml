@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Resources.Styles"
-             xmlns:views="clr-namespace:incomeExpensTrckMAUI.Views"
-             x:Class="incomeExpensTrckMAUI.Pages.ExpensePage"
+             xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels"
+             xmlns:components="clr-namespace:incomeExpensTrckMAUI.Components.ExpenseListComps"
+             x:Class="incomeExpensTrckMAUI.Views.ExpensePage"
+             x:DataType="viewmodel:ExpensePageViewModel"
              Title="ExpensePage"
              Shell.BackgroundColor="White"
              Shell.TitleColor="Black">
@@ -20,12 +22,12 @@
             <Label Text="{Binding Title}" Style="{StaticResource TitleLabelStyle}"/>
         </StackLayout>
     </Shell.TitleView>
-    <VerticalStackLayout Style="{StaticResource MainLayoutStyle}">
-        <!-- Expense List here -->
-        <views:ExpenseListView/>
+    <Grid Style="{StaticResource Main}">
         <!-- Add Expense Button -->
-        <Button Text="Add Expense" 
+        <Button Grid.Row="0" Text="Add Expense" 
                 Style="{StaticResource AddExpenseButtonStyle}" 
-                 />
-    </VerticalStackLayout>
+        />
+        <!-- Expense List here -->
+        <components:ExpenseListComponent Grid.Row="1" BindingContext="{Binding Expenses}"/>
+    </Grid>
 </ContentPage>
