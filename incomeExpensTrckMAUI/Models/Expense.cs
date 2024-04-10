@@ -21,6 +21,9 @@ namespace incomeExpensTrckMAUI.Models
         [MapTo("account")]
         public IList<Account> Account { get; } = null!;
 
+        [MapTo("location")]
+        public string Location { get; set; }
+
         [MapTo("note")]
         public string Note { get; set; }
 

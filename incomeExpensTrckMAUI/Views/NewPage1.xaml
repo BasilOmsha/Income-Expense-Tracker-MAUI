@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="incomeExpensTrckMAUI.Views.NewPage1"
+             Title="NewPage1"
+             Shell.BackgroundColor="White"
+             Shell.TitleColor="Black">
+    <Shell.TitleView>
+        <!--Margins: Left, top, right, buttom-->
+        <StackLayout Margin="0,50,0,20" HeightRequest="50" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Label Text="NewPage1" FontSize="Subtitle" FontAttributes="Bold"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

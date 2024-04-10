@@ -4,24 +4,18 @@ namespace incomeExpensTrckMAUI
 {
     public partial class MainPage : ContentPage
     {
-        //int count = 0;
+        private readonly MainPageViewModel mainPageViewModel;
 
-        public MainPage()
+        //public MainPage()
+        //{
+        //    InitializeComponent();
+
+        //}
+        public MainPage(MainPageViewModel mainPageViewModel)
         {
             InitializeComponent();
-            BindingContext = new MainPageViewModel(); // Set the binding context to MainPageViewModel
+            BindingContext = mainPageViewModel; // Set the binding context to MainPageViewModel
+            this.mainPageViewModel = mainPageViewModel;
         }
-
-        //private void OnCounterClicked(object sender, EventArgs e)
-        //{
-        //    count++;
-
-        //    if (count == 1)
-        //        CounterBtn.Text = $"Clicked {count} time";
-        //    else
-        //        CounterBtn.Text = $"Clicked {count} times";
-
-        //    SemanticScreenReader.Announce(CounterBtn.Text);
-        //}
     }
 }

@@ -1,27 +1,93 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<!-- "Ctrl + K + F" To arrange code-->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="incomeExpensTrckMAUI.MainPage"
-             xmlns:viewModels="clr-namespace:incomeExpensTrckMAUI.ViewModels"
-             x:DataType="viewModels:MainPageViewModel">
-    <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <!-- Title Label -->
-            <Label Text="{Binding Title}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,10,0,0" />
-            <!-- Expense Page Button -->
-            <Button Text="Expense Page" Grid.Row="1" Grid.Column="1" Margin="10" VerticalOptions="Center" />
-            <!-- Income Page Button -->
-            <Button Text="Income Page" Grid.Row="1" Grid.Column="2" Margin="10" VerticalOptions="Center" />
-            <Label Text="" Grid.Row="1" Grid.Column="3" Margin="10" VerticalOptions="Center" />
-        </Grid>
-    </ContentPage.Content>
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels"
+             xmlns:model="clr-namespace:incomeExpensTrckMAUI.Models"
+             xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Resources.Styles"
+             xmlns:controls="clr-namespace:incomeExpensTrckMAUI.Views"
+             x:DataType="viewmodel:MainPageViewModel"
+             Title="{Binding Title}"
+             Shell.BackgroundColor="White"
+             Shell.TitleColor="Black">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <styles:MainPageStyles />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Shell.TitleView>
+        <StackLayout Style="{StaticResource PageTitle}">
+            <Label Text="MainPage" Style="{StaticResource TitleLabel}"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <Page.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent"/>
+    </Page.Behaviors>
+    <!-- Main Content -->
+    <StackLayout BackgroundColor="#ececec">
+        <!-- Top Summary Section -->
+        <Border Style="{StaticResource TopSummaryBorder}">
+            <Grid  Style="{StaticResource TopSummaryGridStyle}">
+                <!-- Income -->
+                <StackLayout Grid.Column="0" HorizontalOptions="Start">
+                    <Label Text="Income" />
+                    <Label Text="345" />
+                </StackLayout>
+                <!-- Expenses -->
+                <StackLayout Grid.Column="1" HorizontalOptions="Center">
+                    <Label Text="Exp." />
+                    <Label Text="245" />
+                </StackLayout>
+                <!-- Total -->
+                <StackLayout Grid.Column="2" HorizontalOptions="End">
+                    <Label Text="Total" />
+                    <Label Text="100"  />
+                </StackLayout>
+            </Grid>
+        </Border>
+        <!-- Scrollable List Content -->
+        <ScrollView>
+            <StackLayout Style="{StaticResource ListStackLayoutStyle}">
+                
+                <!-- Expenses CollectionView -->
+                <CollectionView ItemsSource="{Binding Expenses}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Expense">
+                            <StackLayout Orientation="Vertical" Spacing="10">
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                    <Label Text="{Binding Category[0].Name}" />
+                                    <Label Text="{Binding Account[0].Name}" />
+                                    <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
+                                    <Label Text="{Binding Date, StringFormat='{0:dd ddd}'}" />
+                                     <!--Customize further as needed--> 
+                                </StackLayout>
+                                <controls:IncomeView />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+                <!-- Incomes CollectionView -->
+                <CollectionView ItemsSource="{Binding Incomes}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Income">
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="{Binding Category[0].Name}" />
+                                <Label Text="{Binding Account[0].Name}" />
+                                <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
+                                <Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}" />
+                                <!-- Customize further as needed -->
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>
+    
+    
