@@ -1,16 +1,32 @@
 ﻿using incomeExpensTrckMAUI.Models;
+using incomeExpensTrckMAUI.Views;
+using MvvmHelpers.Commands;
 using System.Collections.ObjectModel;
 
-namespace incomeExpensTrckMAUI.ViewModels
+namespace incomeExpensTrckMAUI.ViewModels.Pages
 {
     public partial class ExpensePageViewModel : BaseViewModel
     {
         public ObservableCollection<Expense> Expenses { get; private set; } = new();
+        public AsyncCommand AddCommand { get; }
 
         public ExpensePageViewModel()
         {
             Title = "Exp. Page";
             GenerateDummyExpenses();
+            AddCommand = new AsyncCommand(AddExpense);
+        }
+
+        async Task AddExpense()
+        {
+            /*var name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of coffee");
+            var roaster = await App.Current.MainPage.DisplayPromptAsync("Roaster", "Roaster of coffee");
+            await CoffeeService.AddCoffee(name, roaster);
+            await Refresh();*/
+
+            var route = $"{nameof(AddExpensePageView)}?Amount=200";
+            await Shell.Current.GoToAsync(route);
+
         }
 
         private void GenerateDummyExpenses()

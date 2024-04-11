@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
+             x:Class="incomeExpensTrckMAUI.Views.Pages.ExpensePages.AddExpensePageView"
+             x:DataType="viewmodel:AddExpensePageViewModel"
+             Title="{Binding Title}"
+             >
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Padding="20">
+            <Label Text="Date:"
+                   Style="{StaticResource LabelMedium}"/>
+            <Entry Text="" />
+            <Label Text="Amount:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="" />
+            <Label Text="Catagory:"
+                   Style="{StaticResource LabelMedium}" />
+            <Picker x:Name="catagoryPicker"
+                    Title="Select a catagory">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Foood</x:String>
+                        <x:String>Social Life</x:String>
+                        <x:String>Pets</x:String>
+                        <x:String>Transport</x:String>
+                        <x:String>Culture</x:String>
+                        <x:String>Household</x:String>
+                        <x:String>Apreal</x:String>
+                        <x:String>Beauty</x:String>
+                        <x:String>Health</x:String>
+                        <x:String>Education</x:String>
+                        <x:String>Gifts</x:String>
+                        <x:String>Other</x:String>
+                        <x:String>Add</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label Text="Account:"
+                   Style="{StaticResource LabelMedium}" />
+            <Picker x:Name="accountPicker"
+                    Title="Select an account">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Cash</x:String>
+                        <x:String>Bank Accounts</x:String>
+                        <x:String>Card</x:String>
+                        <x:String>Add</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label Text="Location:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="" />
+            <Label Text="Note:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="" />
+            <Label Text="Description:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="" />
+            <!--IsRunning="{Binding IsBusy}"-->
+            <!--IsVisible="{Binding IsBusy}"-->
+            <ActivityIndicator
+                HorizontalOptions="Center"
+               
+                VerticalOptions="Center" />
+            <Button
+                Padding="20,0"
+                HorizontalOptions="Center"
+                Text="Save"
+                VerticalOptions="EndAndExpand"
+                Style="{StaticResource ButtonOutline}"/>
+            <Button Clicked="Button_Clicked" Text="Close"
+                Style="{StaticResource ButtonOutline}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

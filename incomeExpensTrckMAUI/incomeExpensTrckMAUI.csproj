@@ -59,6 +59,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" /> 
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Realm" Version="11.7.0" />
+		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
 	</ItemGroup>
 
 	<!-- 
@@ -90,29 +91,38 @@
 	  <Compile Update="Components\ExpenseListComps\ExpenseListComponent.xaml.cs">
 	    <DependentUpon>ExpenseListComponent.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Resources\Styles\ExpensePageStyles.xaml.cs">
+	  <Compile Update="Views\Pages\ExpensePages\Styles\ExpensePageStyles.xaml.cs">
 	    <DependentUpon>ExpensePageStyles.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Pages\ExpensePages\ExpensePageView.xaml.cs">
+	    <DependentUpon>ExpensePageView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Pages\MainPages\MainPageView.xaml.cs">
+	    <DependentUpon>MainPageView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Components\ExpenseListComps\Styles\ExpenseListCompStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ExpensePage.xaml">
+	  <MauiXaml Update="Views\Pages\ExpensePages\AddExpensePageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\ExpensePageStyles.xaml">
+	  <MauiXaml Update="Views\Pages\ExpensePages\ExpensePageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\MainPageStyles.xaml">
+	  <MauiXaml Update="Views\Pages\ExpensePages\Styles\ExpensePageStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\MainPages\Styles\MainPageStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\ExpenseListComps\ExpenseListComponent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\IncomeView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Views\Pages\IncomePages\" />
 	</ItemGroup>
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadUnhandledDeviceExceptionincomeExpensTrckMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 

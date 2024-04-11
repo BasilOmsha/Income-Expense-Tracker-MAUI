@@ -3,8 +3,8 @@
     x:Class="incomeExpensTrckMAUI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:incomeExpensTrckMAUI"
-    xmlns:view="clr-namespace:incomeExpensTrckMAUI.Views"
+    xmlns:mainview="clr-namespace:incomeExpensTrckMAUI.Views.Pages.MainPages"
+    xmlns:expenseview="clr-namespace:incomeExpensTrckMAUI.Views.Pages.ExpensePages"
     Shell.FlyoutBehavior="Disabled"
     Shell.TabBarIsVisible="True"
     Shell.NavBarIsVisible="True"
@@ -32,13 +32,13 @@
         </Tab>-->
         <ShellContent
             Title="MainPage"
-            ContentTemplate="{DataTemplate local:MainPage}"
+            ContentTemplate="{DataTemplate mainview:MainPageView}"
             Route="MainPage"
             Icon="dotnet_bot.png"
          />
         <ShellContent
             Title="ExpensePage"
-            ContentTemplate="{DataTemplate view:ExpensePage}"
+            ContentTemplate="{DataTemplate expenseview:ExpensePageView}"
             Route="ExpensePage"
             Icon="dotnet_bot.png"
         />

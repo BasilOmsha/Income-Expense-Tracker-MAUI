@@ -1,12 +1,11 @@
 ﻿<!-- "Ctrl + K + F" To arrange code-->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="incomeExpensTrckMAUI.MainPage"
+             x:Class="incomeExpensTrckMAUI.Views.Pages.MainPages.MainPageView"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
-             xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels"
+             xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
              xmlns:model="clr-namespace:incomeExpensTrckMAUI.Models"
-             xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Resources.Styles"
-             xmlns:controls="clr-namespace:incomeExpensTrckMAUI.Views"
+             xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Views.Pages.MainPages.Styles"
              x:DataType="viewmodel:MainPageViewModel"
              Title="{Binding Title}"
              Shell.BackgroundColor="White"
@@ -62,9 +61,8 @@
                                     <Label Text="{Binding Account[0].Name}" />
                                     <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
                                     <Label Text="{Binding Date, StringFormat='{0:dd ddd}'}" />
-                                     <!--Customize further as needed--> 
+                                    <!--Customize further as needed-->
                                 </StackLayout>
-                                <controls:IncomeView />
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

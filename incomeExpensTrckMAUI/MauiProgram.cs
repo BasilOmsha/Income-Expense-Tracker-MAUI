@@ -1,19 +1,15 @@
 ﻿using CommunityToolkit.Maui;
-using incomeExpensTrckMAUI.Components.ExpenseListComps;
-using incomeExpensTrckMAUI.Services;
-using incomeExpensTrckMAUI.ViewModels;
-using incomeExpensTrckMAUI.Views;
-
 using Microsoft.Extensions.Logging;
+using incomeExpensTrckMAUI.Views.Pages.MainPages;
+using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
+using incomeExpensTrckMAUI.ViewModels.Pages;
 
 namespace incomeExpensTrckMAUI
 {
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
+            => MauiApp.CreateBuilder()
                 .UseMauiApp<App>()
                 // Initialize the .NET MAUI Community Toolkit by adding the below line of code
                 .UseMauiCommunityToolkit()
@@ -21,25 +17,32 @@ namespace incomeExpensTrckMAUI
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .RegisterViewModels()
+                .RegisterViews()
+                .Build();
 
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<MainPageViewModel>();
-
-            builder.Services.AddSingleton<IncomeView>();
-            builder.Services.AddSingleton<IncomeService>();
-            builder.Services.AddSingleton<IncomeViewModel>();
-
-            builder.Services.AddSingleton<ExpensePage>();
-            builder.Services.AddSingleton<ExpenseListComponent>();
-            builder.Services.AddSingleton<ExpensePageViewModel>();
-
-
+        /* Registering dependencies with extension methods. This all */
+        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
+            mauiAppBuilder.Services.AddSingleton<ExpensePageViewModel>();
+            mauiAppBuilder.Services.AddSingleton<AddExpensePageViewModel>();
 #if DEBUG
-            builder.Logging.AddDebug();
+            mauiAppBuilder.Logging.AddDebug();
 #endif
+            return mauiAppBuilder;
+        }
 
-            return builder.Build();
+        public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddSingleton<MainPageView>();
+            mauiAppBuilder.Services.AddSingleton<ExpensePageView>();
+            mauiAppBuilder.Services.AddSingleton<AddExpensePageView>();
+#if DEBUG
+            mauiAppBuilder.Logging.AddDebug();
+#endif
+            return mauiAppBuilder;
         }
     }
 }

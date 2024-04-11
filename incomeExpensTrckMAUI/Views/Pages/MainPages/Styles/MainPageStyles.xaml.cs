@@ -1,4 +1,4 @@
-namespace incomeExpensTrckMAUI.Resources.Styles;
+namespace incomeExpensTrckMAUI.Views.Pages.MainPages.Styles;
 
 public partial class MainPageStyles : ResourceDictionary
 {

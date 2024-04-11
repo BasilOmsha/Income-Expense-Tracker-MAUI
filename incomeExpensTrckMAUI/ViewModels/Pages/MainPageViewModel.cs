@@ -1,8 +1,7 @@
-﻿
-using incomeExpensTrckMAUI.Models;
+﻿using incomeExpensTrckMAUI.Models;
 using System.Collections.ObjectModel;
 
-namespace incomeExpensTrckMAUI.ViewModels
+namespace incomeExpensTrckMAUI.ViewModels.Pages
 {
     public partial class MainPageViewModel : BaseViewModel
     {

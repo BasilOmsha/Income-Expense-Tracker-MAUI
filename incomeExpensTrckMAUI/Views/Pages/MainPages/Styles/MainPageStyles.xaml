@@ -2,7 +2,7 @@
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="incomeExpensTrckMAUI.Resources.Styles.MainPageStyles">
+    x:Class="incomeExpensTrckMAUI.Views.Pages.MainPages.Styles.MainPageStyles">
     
     <Style x:Key="PageTitle" TargetType="StackLayout">
         <Setter Property="Margin" Value="0,50,0,20"/>
