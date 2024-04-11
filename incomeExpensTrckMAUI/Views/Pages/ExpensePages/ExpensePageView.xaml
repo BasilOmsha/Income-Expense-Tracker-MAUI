@@ -20,7 +20,7 @@
         </StackLayout>
     </Shell.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddCommand}"/>
+        <ToolbarItem Text="Add" Command="{Binding NavToAddExpenseCommand}"/>
     </ContentPage.ToolbarItems>
     <Grid Style="{StaticResource Main}">
         <!-- Add Expense Button -->
