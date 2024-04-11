@@ -30,7 +30,7 @@
              RefreshColor="{StaticResource PrimaryColor}"
              Grid.RowSpan="2">
             <!-- Expense List here -->
-            <CollectionView ItemsSource="{Binding Expenses}" Style="{StaticResource CollectionViewStyle}">
+            <CollectionView ItemsSource="{Binding Expenses}" Style="{StaticResource CollectionViewStyle}" SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Expense">
                         <Frame Margin="5,5,5,5">

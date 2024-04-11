@@ -30,8 +30,10 @@ namespace incomeExpensTrckMAUI
         {
             mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
             mauiAppBuilder.Services.AddSingleton<ExpensePageViewModel>(); // Singleton means that a single instance of the service is created and shared. Meaning that the same instance is used by all consumers.
-            mauiAppBuilder.Services.AddTransient<AddExpensePageViewModel>(); // Transient means that a new instance of the service is created each time it is requested.
-#if DEBUG
+            mauiAppBuilder.Services.AddSingleton<AddExpensePageViewModel>(); // Transient means that a new instance of the service is created each time it is requested.
+            mauiAppBuilder.Services.AddTransient<ExpenseDetailPageViewModel>();
+#if DEBUG   
+
             mauiAppBuilder.Logging.AddDebug();
 #endif
             return mauiAppBuilder;

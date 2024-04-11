@@ -25,6 +25,17 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         }
 
         [RelayCommand]
+        async Task GetExpenseDetail(Expense expense)
+        {
+            if (expense == null) return;
+
+            await Shell.Current.GoToAsync(nameof(ExpenseDetailPageView), true, new Dictionary<string, object>
+            {
+                {nameof(Expense), expense}
+            });
+        }
+
+        [RelayCommand]
         async Task NavToAddExpense()
         {
             /*var name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of coffee");
@@ -64,17 +75,6 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
                 IsLoading = false;
                 IsRefreshing = false;
             }
-        }
-
-        [RelayCommand]
-        async Task GetExpenseDetail(Expense expense)
-        {
-            if (expense == null) return;
-
-            await Shell.Current.GoToAsync(nameof(ExpenseDetailPageView), true, new Dictionary<string, object>
-            {
-                {nameof(Expense), expense}
-            });
         }
     }
 }
