@@ -1,5 +1,5 @@
 ﻿using incomeExpensTrckMAUI.Models;
-using incomeExpensTrckMAUI.Views;
+using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
 using MvvmHelpers.Commands;
 using System.Collections.ObjectModel;
 

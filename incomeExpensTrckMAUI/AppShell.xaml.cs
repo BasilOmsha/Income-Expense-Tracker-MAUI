@@ -1,4 +1,4 @@
-﻿using incomeExpensTrckMAUI.Views;
+﻿using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
 
 namespace incomeExpensTrckMAUI
 {
