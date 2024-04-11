@@ -2,76 +2,84 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
+             xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Views.Pages.ExpensePages.Styles"
              x:Class="incomeExpensTrckMAUI.Views.Pages.ExpensePages.AddExpensePageView"
-             x:DataType="viewmodel:AddExpensePageViewModel"
-             Title="{Binding Title}"
-             >
+             x:DataType="viewmodel:AddExpensePageViewModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <styles:AddExpensePageStyles />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Shell.TitleView>
+        <StackLayout Style="{StaticResource PageTitleStyle}">
+            <Label Text="{Binding Title}" Style="{StaticResource TitleLabelStyle}"/>
+        </StackLayout>
+    </Shell.TitleView>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center" Padding="20">
-            <Label Text="Date:"
-                   Style="{StaticResource LabelMedium}"/>
-            <Entry Text="" />
-            <Label Text="Amount:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="" />
-            <Label Text="Catagory:"
-                   Style="{StaticResource LabelMedium}" />
-            <Picker x:Name="catagoryPicker"
-                    Title="Select a catagory">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Foood</x:String>
-                        <x:String>Social Life</x:String>
-                        <x:String>Pets</x:String>
-                        <x:String>Transport</x:String>
-                        <x:String>Culture</x:String>
-                        <x:String>Household</x:String>
-                        <x:String>Apreal</x:String>
-                        <x:String>Beauty</x:String>
-                        <x:String>Health</x:String>
-                        <x:String>Education</x:String>
-                        <x:String>Gifts</x:String>
-                        <x:String>Other</x:String>
-                        <x:String>Add</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-            <Label Text="Account:"
-                   Style="{StaticResource LabelMedium}" />
-            <Picker x:Name="accountPicker"
-                    Title="Select an account">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Cash</x:String>
-                        <x:String>Bank Accounts</x:String>
-                        <x:String>Card</x:String>
-                        <x:String>Add</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-            <Label Text="Location:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="" />
-            <Label Text="Note:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="" />
-            <Label Text="Description:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="" />
-            <!--IsRunning="{Binding IsBusy}"-->
-            <!--IsVisible="{Binding IsBusy}"-->
-            <ActivityIndicator
-                HorizontalOptions="Center"
-               
-                VerticalOptions="Center" />
-            <Button
-                Padding="20,0"
-                HorizontalOptions="Center"
-                Text="Save"
-                VerticalOptions="EndAndExpand"
-                Style="{StaticResource ButtonOutline}"/>
-            <Button Clicked="Button_Clicked" Text="Close"
-                Style="{StaticResource ButtonOutline}"/>
+        <StackLayout>
+            <Grid Style="{StaticResource Layoutgrid}">
+                <Label Text="Date" VerticalOptions="Center"/>
+                <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                <DatePicker x:Name="datePicker" Format="dd.MM.yyyy" Grid.Column="1"/>
+            </Grid>
+            <Grid Style="{StaticResource Layoutgrid}">
+                <Label Text="Amount" VerticalOptions="Center"/>
+                <Entry Placeholder="Amount" Grid.Column="1" Keyboard="Numeric"/>
+            </Grid>
+            <Grid Style="{StaticResource Layoutgrid}">
+                <Label Text="Catagory" VerticalOptions="Center"/>
+                <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                <Picker x:Name="catagoryPicker" Title="Select a catagory" Grid.Column="1">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Foood</x:String>
+                            <x:String>Social Life</x:String>
+                            <x:String>Pets</x:String>
+                            <x:String>Transport</x:String>
+                            <x:String>Culture</x:String>
+                            <x:String>Household</x:String>
+                            <x:String>Apreal</x:String>
+                            <x:String>Beauty</x:String>
+                            <x:String>Health</x:String>
+                            <x:String>Education</x:String>
+                            <x:String>Gifts</x:String>
+                            <x:String>Other</x:String>
+                            <x:String>Add</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            <Grid Style="{StaticResource Layoutgrid}">
+                <Label Text="Account" VerticalOptions="Center"/>
+                <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                <Picker x:Name="accountPicker" Title="Select an account" Grid.Column="1">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Cash</x:String>
+                            <x:String>Bank Accounts</x:String>
+                            <x:String>Card</x:String>
+                            <x:String>Add</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            <Grid Style="{StaticResource Layoutgrid}">
+                <Label Text="Location" VerticalOptions="Center"/>
+                <Entry Placeholder="Location" Grid.Column="1" Keyboard="Default"/>
+            </Grid>
+            <Grid Style="{StaticResource Layoutgrid}">
+                <Label Text="Note" VerticalOptions="Center"/>
+                <Entry Placeholder="Note" Grid.Column="1" Keyboard="Default"/>
+            </Grid>
+            <Grid Style="{StaticResource Layoutgrid}">
+                <Label Text="Description" VerticalOptions="Center"/>
+                <Entry Placeholder="Description" Grid.Column="1" Keyboard="Default"/>
+            </Grid>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" />
+            <Button Grid.Row="7" Text="Save" Style="{StaticResource ButtonOutline}"/>
+            <!--<Button Grid.Row="8" Clicked="Button_Clicked" Text="Close" Style="{StaticResource ButtonOutline}"/>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

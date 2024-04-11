@@ -6,10 +6,7 @@
              xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
              xmlns:components="clr-namespace:incomeExpensTrckMAUI.Components.ExpenseListComps"
              x:Class="incomeExpensTrckMAUI.Views.Pages.ExpensePages.ExpensePageView"
-             x:DataType="viewmodel:ExpensePageViewModel"
-             Title="ExpensePage"
-             Shell.BackgroundColor="White"
-             Shell.TitleColor="Black">
+             x:DataType="viewmodel:ExpensePageViewModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

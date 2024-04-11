@@ -7,7 +7,6 @@
     <Style x:Key="PageTitle" TargetType="StackLayout">
         <Setter Property="Margin" Value="0,50,0,20"/>
         <!--Margins: Left, top, right, buttom-->
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
         <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
         <Setter Property="HeightRequest" Value="50"/>
     </Style>
@@ -15,6 +14,7 @@
     <Style x:Key="TitleLabel" TargetType="Label">
         <Setter Property="FontSize" Value="Subtitle"/>
         <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="#fff"/>
     </Style>
     
     <Style x:Key="TopSummaryBorder" TargetType="Border">

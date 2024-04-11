@@ -111,6 +111,9 @@
 	  <MauiXaml Update="Views\Pages\ExpensePages\ExpensePageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\ExpensePages\Styles\AddExpensePageStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\ExpensePages\Styles\ExpensePageStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

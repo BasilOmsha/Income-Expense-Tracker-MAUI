@@ -8,9 +8,6 @@
     Shell.FlyoutBehavior="Disabled"
     Shell.TabBarIsVisible="True"
     Shell.NavBarIsVisible="True"
-    Background="White"
-    ForegroundColor="White"
-    TitleColor="#fff"
     DisabledColor="Grey"
     UnselectedColor="DarkGrey">
     

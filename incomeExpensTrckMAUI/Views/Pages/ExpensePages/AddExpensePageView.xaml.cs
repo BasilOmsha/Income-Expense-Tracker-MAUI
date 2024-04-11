@@ -7,21 +7,15 @@ public partial class AddExpensePageView : ContentPage
 {
     private readonly AddExpensePageViewModel addExpensePageViewModel;
 
-
-    //public AddExpensePageView()
-    //{
-    //    InitializeComponent();
-    //}
-
     public AddExpensePageView(AddExpensePageViewModel addExpensePageViewModel)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         //this.addExpensePageViewModel = addExpensePageViewModel;
         BindingContext = addExpensePageViewModel;
     }
 
-    private async void Button_Clicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("..");
-    }
+    //private async void Button_Clicked(object sender, EventArgs e)
+    //{
+    //    await Shell.Current.GoToAsync("..");
+    //}
 }

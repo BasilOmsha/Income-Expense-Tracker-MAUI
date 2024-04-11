@@ -15,8 +15,11 @@
     <CollectionView ItemsSource="{Binding}" Style="{StaticResource CollectionViewStyle}">
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:Expense">
-                <Grid VerticalOptions="StartAndExpand" Style="{StaticResource ItemsGridStyle}">
-                    <Label BackgroundColor="Red" Grid.Row="0" Grid.Column="0" Text="{Binding Date, StringFormat='Date: {0:dd.MM.yyyy}'}"/>
+                <Grid Style="{StaticResource ItemsGridStyle}">
+                    <StackLayout Style="{StaticResource DateStack}" Grid.ColumnSpan="3" Grid.Row="0" Grid.Column="0">
+                        <Label Style="{StaticResource DateLabel}" Text="{Binding Date, StringFormat='Date: {0:dd.MM.yyyy}'}"/>
+                        <BoxView />
+                    </StackLayout>
                     <Label Grid.Row="1" Grid.Column="0" Text="{Binding Category[0].Name, StringFormat='Catagory: {0:C}'}" />
                     <Label Grid.Row="2" Grid.Column="0" Text="{Binding Account[0].Name, StringFormat='Account: {0:C}'}" />
                     <Label Grid.Row="1" Grid.Column="2" Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />

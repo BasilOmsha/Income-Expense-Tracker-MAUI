@@ -6,10 +6,7 @@
              xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
              xmlns:model="clr-namespace:incomeExpensTrckMAUI.Models"
              xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Views.Pages.MainPages.Styles"
-             x:DataType="viewmodel:MainPageViewModel"
-             Title="{Binding Title}"
-             Shell.BackgroundColor="White"
-             Shell.TitleColor="Black">
+             x:DataType="viewmodel:MainPageViewModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -19,7 +16,7 @@
     </ContentPage.Resources>
     <Shell.TitleView>
         <StackLayout Style="{StaticResource PageTitle}">
-            <Label Text="MainPage" Style="{StaticResource TitleLabel}"/>
+            <Label Text="{Binding Title}" Style="{StaticResource TitleLabel}"/>
         </StackLayout>
     </Shell.TitleView>
     <Page.Behaviors>

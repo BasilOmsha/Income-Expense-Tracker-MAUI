@@ -7,11 +7,6 @@ public partial class ExpensePageView : ContentPage
 {
     private readonly ExpensePageViewModel expensePageViewModel;
 
-    //public ExpensePage()
-    //{
-    //    InitializeComponent();
-    //}
-
     public ExpensePageView(ExpensePageViewModel expensePageViewModel)
     {
         InitializeComponent();
