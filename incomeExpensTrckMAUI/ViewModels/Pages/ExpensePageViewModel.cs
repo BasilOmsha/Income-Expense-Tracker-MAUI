@@ -65,5 +65,16 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
                 IsRefreshing = false;
             }
         }
+
+        [RelayCommand]
+        async Task GetExpenseDetail(Expense expense)
+        {
+            if (expense == null) return;
+
+            await Shell.Current.GoToAsync(nameof(ExpenseDetailPageView), true, new Dictionary<string, object>
+            {
+                {nameof(Expense), expense}
+            });
+        }
     }
 }

@@ -4,7 +4,7 @@
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Views.Pages.ExpensePages.Styles"
              xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
-             xmlns:components="clr-namespace:incomeExpensTrckMAUI.Components.ExpenseListComps"
+             xmlns:model="clr-namespace:incomeExpensTrckMAUI.Models"
              x:Class="incomeExpensTrckMAUI.Views.Pages.ExpensePages.ExpensePageView"
              x:DataType="viewmodel:ExpensePageViewModel">
     <ContentPage.Resources>
@@ -30,7 +30,28 @@
              RefreshColor="{StaticResource PrimaryColor}"
              Grid.RowSpan="2">
             <!-- Expense List here -->
-            <components:ExpenseListComponent  BindingContext="{Binding Expenses}"/>
+            <CollectionView ItemsSource="{Binding Expenses}" Style="{StaticResource CollectionViewStyle}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Expense">
+                        <Frame Margin="5,5,5,5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExpensePageViewModel}}, Path=GetExpenseDetailCommand}" CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                            <Grid Style="{StaticResource ItemsGridStyle}">
+                                <StackLayout Style="{StaticResource DateStack}" Grid.ColumnSpan="3" Grid.Row="0" Grid.Column="0">
+                                    <Label Style="{StaticResource DateLabel}" Text="{Binding Date, StringFormat='Date: {0:dd.MM.yyyy}'}"/>
+                                    <BoxView />
+                                </StackLayout>
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Category, StringFormat='Catagory: {0:C}'}" />
+                                <Label Grid.Row="2" Grid.Column="0" Text="{Binding Account, StringFormat='Account: {0:C}'}" />
+                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
+                                <!--<Label Grid.Row="2" Grid.Column="0" Text="{Binding Description, StringFormat='Description: {0:C}'}" />
+                                <Label Grid.Row="3" Grid.Column="0" Text="{Binding Note, StringFormat='Note: {0:C}'}" />-->
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </RefreshView>
     </Grid>
 </ContentPage>

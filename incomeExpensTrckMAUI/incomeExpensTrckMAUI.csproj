@@ -88,9 +88,6 @@
 		<None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Update="Components\ExpenseListComps\ExpenseListComponent.xaml.cs">
-	    <DependentUpon>ExpenseListComponent.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Views\Pages\ExpensePages\Styles\ExpensePageStyles.xaml.cs">
 	    <DependentUpon>ExpensePageStyles.xaml</DependentUpon>
 	  </Compile>
@@ -102,10 +99,10 @@
 	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiXaml Update="Components\ExpenseListComps\Styles\ExpenseListCompStyles.xaml">
+	  <MauiXaml Update="Views\Pages\ExpensePages\AddExpensePageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\ExpensePages\AddExpensePageView.xaml">
+	  <MauiXaml Update="Views\Pages\ExpensePages\ExpenseDetailPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\ExpensePages\ExpensePageView.xaml">
@@ -118,9 +115,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\MainPages\Styles\MainPageStyles.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Components\ExpenseListComps\ExpenseListComponent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

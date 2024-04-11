@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Views.Pages.ExpensePages.Styles"
+             xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
+             x:Class="incomeExpensTrckMAUI.Views.Pages.ExpensePages.ExpenseDetailPageView"
+             x:DataType="viewmodel:ExpenseDetailPageViewModel"
+             Title="ExpenseDetailPageView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <styles:ExpensePageStyles />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Shell.TitleView>
+        <StackLayout Style="{StaticResource PageTitleStyle}">
+            <Label Text="{Binding Title}" Style="{StaticResource TitleLabelStyle}"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding Expense.Date}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

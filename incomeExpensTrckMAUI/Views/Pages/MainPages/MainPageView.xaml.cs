@@ -6,11 +6,6 @@ public partial class MainPageView : ContentPage
 {
     private readonly MainPageViewModel mainPageViewModel;
 
-    //public MainPage()
-    //{
-    //    InitializeComponent();
-
-    //}
     public MainPageView(MainPageViewModel mainPageViewModel)
     {
         InitializeComponent();

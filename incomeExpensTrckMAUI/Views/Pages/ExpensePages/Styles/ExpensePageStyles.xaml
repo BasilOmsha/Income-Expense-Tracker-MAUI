@@ -33,4 +33,51 @@
         <Setter Property="Margin" Value="0,5,0,0"/>
         <Setter Property="BackgroundColor" Value="#0078d4"/>
     </Style>
+    <Style x:Key="CollectionViewStyle" TargetType="CollectionView">
+        <Setter Property="BackgroundColor" Value="#ececec"/>
+        <!--Margins: Left, top, right, buttom-->
+        <Setter Property="Margin" Value="0, 5, 0, 0"/>
+    </Style>
+    <Style x:Key="ItemsGridStyle" TargetType="Grid">
+        <Setter Property="HeightRequest" Value="200"/>
+        <Setter Property="Margin" Value="0, 0, 0, 5"/>
+        <Setter Property="BackgroundColor" Value="#ffffff"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="ColumnDefinitions">
+            <Setter.Value>
+                <ColumnDefinitionCollection>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </ColumnDefinitionCollection>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="RowDefinitions">
+            <Setter.Value>
+                <RowDefinitionCollection>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </RowDefinitionCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="Black"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="VerticalTextAlignment" Value="Start"/>
+    </Style>
+    <Style x:Key="DateStack"  TargetType="StackLayout">
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+    <Style x:Key="DateLabel"  TargetType="Label">
+        <Setter Property="Margin" Value="0,0,0,5"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+    <Style TargetType="BoxView">
+        <Setter Property="Color" Value="#ececec"/>
+        <Setter Property="HeightRequest" Value="1"/>
+        <Setter Property="HorizontalOptions" Value="Fill"/>
+    </Style>
 </ResourceDictionary>
