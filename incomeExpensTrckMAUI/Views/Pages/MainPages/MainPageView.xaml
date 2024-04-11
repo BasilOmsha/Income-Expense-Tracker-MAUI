@@ -54,8 +54,8 @@
                         <DataTemplate x:DataType="model:Expense">
                             <StackLayout Orientation="Vertical" Spacing="10">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Label Text="{Binding Category[0].Name}" />
-                                    <Label Text="{Binding Account[0].Name}" />
+                                    <Label Text="{Binding Category}" />
+                                    <Label Text="{Binding Account}" />
                                     <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
                                     <Label Text="{Binding Date, StringFormat='{0:dd ddd}'}" />
                                     <!--Customize further as needed-->
@@ -70,8 +70,8 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Income">
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="{Binding Category[0].Name}" />
-                                <Label Text="{Binding Account[0].Name}" />
+                                <Label Text="{Binding Category}" />
+                                <Label Text="{Binding Account}" />
                                 <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
                                 <Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}" />
                                 <!-- Customize further as needed -->

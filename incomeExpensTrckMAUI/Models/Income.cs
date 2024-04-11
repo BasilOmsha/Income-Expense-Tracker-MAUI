@@ -17,10 +17,10 @@ namespace incomeExpensTrckMAUI.Models
         public double Amount { get; set; }
 
         [MapTo("category")]
-        public IList<IncomeCategory> Category { get; } = null!;
+        public string Category { get; set; }
 
         [MapTo("account")]
-        public IList<Account> Account { get; } = null!;
+        public string Account { get; set; }
 
         [MapTo("note")]
         public string Note { get; set; }

@@ -24,10 +24,13 @@
     </ContentPage.ToolbarItems>
     <Grid Style="{StaticResource Main}">
         <!-- Add Expense Button -->
-        <!--<Button Grid.Row="0" Text="Add Expense" 
-                Style="{StaticResource AddExpenseButtonStyle}" 
-        />-->
-        <!-- Expense List here -->
-        <components:ExpenseListComponent Grid.Row="1" BindingContext="{Binding Expenses}"/>
+        <!--<Button Style="{StaticResource AddExpenseButtonStyle}" Command="{Binding GetExpenseListCommand}" IsEnabled="{Binding IsNotLoading}" Text="Fetch Expenses"  Grid.Row="0"/>-->
+        <RefreshView Command="{Binding GetExpenseListCommand}"
+             IsRefreshing="{Binding IsRefreshing}"
+             RefreshColor="{StaticResource PrimaryColor}"
+             Grid.RowSpan="2">
+            <!-- Expense List here -->
+            <components:ExpenseListComponent  BindingContext="{Binding Expenses}"/>
+        </RefreshView>
     </Grid>
 </ContentPage>

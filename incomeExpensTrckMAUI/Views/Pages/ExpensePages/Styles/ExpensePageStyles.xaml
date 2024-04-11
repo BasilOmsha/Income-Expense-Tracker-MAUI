@@ -13,11 +13,8 @@
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="TextColor" Value="#fff"/>
     </Style>
-    <Style x:Key="AddExpenseButtonStyle" TargetType="Button">
-        <!--<Setter Property="BackgroundColor" Value="#ececec"/>-->
-    </Style>
     <Style x:Key="Main" TargetType="Grid">
-        <Setter Property="BackgroundColor" Value="#ececec"/>
+        <Setter Property="BackgroundColor" Value="#fff"/>
         <Setter Property="RowDefinitions">
             <Setter.Value>
                 <RowDefinitionCollection>
@@ -26,5 +23,14 @@
                 </RowDefinitionCollection>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style x:Key="AddExpenseButtonStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="Subtitle"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="WidthRequest" Value="200"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="Margin" Value="0,5,0,0"/>
+        <Setter Property="BackgroundColor" Value="#0078d4"/>
     </Style>
 </ResourceDictionary>

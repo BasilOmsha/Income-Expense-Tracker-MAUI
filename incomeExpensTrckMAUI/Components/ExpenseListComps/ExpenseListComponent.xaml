@@ -20,8 +20,8 @@
                         <Label Style="{StaticResource DateLabel}" Text="{Binding Date, StringFormat='Date: {0:dd.MM.yyyy}'}"/>
                         <BoxView />
                     </StackLayout>
-                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Category[0].Name, StringFormat='Catagory: {0:C}'}" />
-                    <Label Grid.Row="2" Grid.Column="0" Text="{Binding Account[0].Name, StringFormat='Account: {0:C}'}" />
+                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Category, StringFormat='Catagory: {0:C}'}" />
+                    <Label Grid.Row="2" Grid.Column="0" Text="{Binding Account, StringFormat='Account: {0:C}'}" />
                     <Label Grid.Row="1" Grid.Column="2" Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
                     <!--<Label Grid.Row="2" Grid.Column="0" Text="{Binding Description, StringFormat='Description: {0:C}'}" />
                     <Label Grid.Row="3" Grid.Column="0" Text="{Binding Note, StringFormat='Note: {0:C}'}" />-->

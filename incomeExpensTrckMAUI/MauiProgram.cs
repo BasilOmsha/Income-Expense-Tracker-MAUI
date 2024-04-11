@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using incomeExpensTrckMAUI.Views.Pages.MainPages;
 using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
 using incomeExpensTrckMAUI.ViewModels.Pages;
+using incomeExpensTrckMAUI.Services;
 
 namespace incomeExpensTrckMAUI
 {
@@ -20,6 +21,7 @@ namespace incomeExpensTrckMAUI
                 })
                 .RegisterViewModels()
                 .RegisterViews()
+                .RegisterServices()
                 .Build();
 
         /* Registering dependencies with extension methods. This all */
@@ -39,6 +41,16 @@ namespace incomeExpensTrckMAUI
             mauiAppBuilder.Services.AddSingleton<MainPageView>();
             mauiAppBuilder.Services.AddSingleton<ExpensePageView>();
             mauiAppBuilder.Services.AddSingleton<AddExpensePageView>();
+#if DEBUG
+            mauiAppBuilder.Logging.AddDebug();
+#endif
+            return mauiAppBuilder;
+        }
+
+        public static MauiAppBuilder RegisterServices(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddSingleton<ExpenseService>();
+            mauiAppBuilder.Services.AddSingleton<IncomeService>();
 #if DEBUG
             mauiAppBuilder.Logging.AddDebug();
 #endif

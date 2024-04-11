@@ -34,7 +34,7 @@
                 <Picker x:Name="catagoryPicker" Title="Select a catagory" Grid.Column="1">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>Foood</x:String>
+                            <x:String>Food</x:String>
                             <x:String>Social Life</x:String>
                             <x:String>Pets</x:String>
                             <x:String>Transport</x:String>

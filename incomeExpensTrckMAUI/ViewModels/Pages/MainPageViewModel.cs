@@ -21,15 +21,12 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             {
                 Date = DateTimeOffset.Now,
                 Amount = 100,
-                //Category = new List<ExpenseCategory> { new ExpenseCategory { Name = "Groceries" } },
-                //Account = new List<Account> { new Account { Name = "Checking" } },
+                Category = "Groceries",
+                Account = "Checking",
                 Location = "Local Supermarket",
                 Note = "Weekly groceries",
                 Description = "Food and supplies"
             };
-
-            expense.Category.Add(new ExpenseCategory { Name = "Groceries" });
-            expense.Account.Add(new Account { Name = "Checking" });
 
             Expenses.Add(expense);
 
@@ -41,14 +38,11 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             {
                 Date = DateTimeOffset.Now,
                 Amount = 100,
-                //Category = new List<ExpenseCategory> { new ExpenseCategory { Name = "Groceries" } },
-                //Account = new List<Account> { new Account { Name = "Checking" } },
+                Category = "Salary",
+                Account = "Card",
                 Note = "Monthly salary",
                 Description = "Salary"
             };
-
-            income.Category.Add(new IncomeCategory { Name = "Salary" });
-            income.Account.Add(new Account { Name = "Bank Transfer" });
 
             Incomes.Add(income);
         }

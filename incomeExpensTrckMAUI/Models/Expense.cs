@@ -16,10 +16,10 @@ namespace incomeExpensTrckMAUI.Models
         public double Amount { get; set; }
 
         [MapTo("category")]
-        public IList<ExpenseCategory> Category { get; } = null!; // this is implementing a list of ExpenseCategory that has its own properties
+        public string Category { get; set; }
 
         [MapTo("account")]
-        public IList<Account> Account { get; } = null!;
+        public string Account { get; set; }
 
         [MapTo("location")]
         public string Location { get; set; }
