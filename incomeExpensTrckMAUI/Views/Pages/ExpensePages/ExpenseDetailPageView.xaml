@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Views.Pages.ExpensePages.Styles"
              xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              x:Class="incomeExpensTrckMAUI.Views.Pages.ExpensePages.ExpenseDetailPageView"
              x:DataType="viewmodel:ExpenseDetailPageViewModel"
              Title="ExpenseDetailPageView">
@@ -19,10 +20,11 @@
         </StackLayout>
     </Shell.TitleView>
     <VerticalStackLayout>
+        <Label Text="View And Edit Your Expenses" Margin="0,15,0,15" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Subtitle" FontAttributes="Bold"/>
         <Grid Style="{StaticResource Layoutgrid}">
             <Label Text="Date" VerticalOptions="Center"/>
-            <Label Text="{Binding Expense.Date, StringFormat='{0:dd.MM.yyyy}'}" Grid.Column="1"/>
-            <DatePicker   Grid.Column="1"/>
+            <!--<Label Text="{Binding Expense.Date, StringFormat='{0:dd.MM.yyyy}'}" Grid.Column="1"/>-->
+            <DatePicker Date="{Binding Expense.Date, Mode=TwoWay}" Format="{}dd.MM.yyyy" Grid.Column="1"/>
         </Grid>
         <Grid Style="{StaticResource Layoutgrid}">
             <Label Text="Amount" VerticalOptions="Center"/>
@@ -75,7 +77,9 @@
         </Grid>
         <Grid Style="{StaticResource Layoutgrid}">
             <Label Text="Description" VerticalOptions="Center"/>
-            <Entry Text="{Binding Expense.Description}" Placeholder="Description" Grid.Column="1" Keyboard="Default"/>
+            <Editor AutoSize="TextChanges" Text="{Binding Expense.Description}" Placeholder="Description" Grid.Column="1" Keyboard="Default"/>
         </Grid>
+        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" />
+        <Button Grid.Row="7" Text="Save" Style="{StaticResource ButtonOutline}"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -19,9 +19,9 @@ namespace incomeExpensTrckMAUI
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
-                .RegisterViewModels()
                 .RegisterViews()
                 .RegisterServices()
+                .RegisterViewModels()
 
                 .Build();
 

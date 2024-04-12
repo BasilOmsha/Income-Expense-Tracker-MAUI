@@ -99,6 +99,15 @@
 	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiXaml Update="Components\ExpenseFormComps\ExoenseFormComponent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\ExpenseListComps\ExpenseListComponent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\ExpenseListComps\Styles\ExpenseListCompStyle.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\ExpensePages\AddExpensePageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
