@@ -11,9 +11,9 @@ namespace incomeExpensTrckMAUI.Services
             {
                 Id = ObjectId.GenerateNewId(),
                 Date = new DateTimeOffset(new DateTime(2024, 1, 15)),
-                Amount = 1500.00,
-                Category = "Coffee_Shop",
-                Account = "Card",
+                Amount = 10.00,
+                Category = "Culture",
+                Account = "Cash",
                 Location = "Starbucks",
                 Note = "Food",
                 Description = "Coffee"
@@ -23,9 +23,9 @@ namespace incomeExpensTrckMAUI.Services
            {
                 Id = ObjectId.GenerateNewId(),
                 Date = new DateTimeOffset(new DateTime(2024, 2, 15)),
-                Amount = 1200.00,
+                Amount = 120.00,
                 Category = "Groceries",
-                Account = "Cash",
+                Account = "Card",
                 Location = "Local Supermarket",
                 Note = "Weekly groceries",
                 Description = "Food and supplies"
@@ -35,8 +35,8 @@ namespace incomeExpensTrckMAUI.Services
             {
                 Id = ObjectId.GenerateNewId(),
                 Date = new DateTimeOffset(new DateTime(2024, 2, 15)),
-                Amount = 1500.00,
-                Category = "Appreal",
+                Amount = 350.00,
+                Category = "Clothes",
                 Account = "Card",
                 Location = "H&M",
                 Note = "Clothes",
@@ -47,10 +47,10 @@ namespace incomeExpensTrckMAUI.Services
             {
                 Id = ObjectId.GenerateNewId(),
                 Date = new DateTimeOffset(new DateTime(2024, 2, 15)),
-                Amount = 1500.00,
-                Category = "Appreal",
-                Account = "Card",
-                Location = "H&M",
+                Amount = 50.00,
+                Category = "Health",
+                Account = "Bank Accounts",
+                Location = "Hospital",
                 Note = "Clothes",
                 Description = "Supplies"
             };
@@ -59,10 +59,10 @@ namespace incomeExpensTrckMAUI.Services
             {
                 Id = ObjectId.GenerateNewId(),
                 Date = new DateTimeOffset(new DateTime(2024, 2, 15)),
-                Amount = 1500.00,
-                Category = "Appreal",
-                Account = "Card",
-                Location = "H&M",
+                Amount = 900.00,
+                Category = "Education",
+                Account = "Bank Accounts",
+                Location = "HAMK",
                 Note = "Clothes",
                 Description = "Supplies"
             };

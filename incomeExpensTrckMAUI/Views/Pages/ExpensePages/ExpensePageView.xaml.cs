@@ -12,5 +12,15 @@ public partial class ExpensePageView : ContentPage
     {
         InitializeComponent();
         BindingContext = expensePageViewModel;
+        this.expensePageViewModel = expensePageViewModel;
+    }
+
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+      
+        // call the GetExpenseListCommand method from the ViewModel
+        expensePageViewModel.GetExpenseListCommand.Execute(null);
+
+        base.OnNavigatedTo(args);
     }
 }
