@@ -80,6 +80,9 @@
             <Editor AutoSize="TextChanges" Text="{Binding Expense.Description}" Placeholder="Description" Grid.Column="1" Keyboard="Default"/>
         </Grid>
         <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" />
-        <Button Grid.Row="7" Text="Save" Style="{StaticResource ButtonOutline}"/>
+        <Button Grid.Row="7" Text="Update" Style="{StaticResource ButtonOutline}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExpenseDetailPageViewModel}}, 
+            Path=UpdateExpenseCommand }" CommandParameter="{Binding Expense.Id}"/>
+        <Button Grid.Row="7" Text="Delete" Style="{StaticResource ButtonOutline}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExpenseDetailPageViewModel}}, 
+            Path=DeleteExpenseCommand }" CommandParameter="{Binding Expense.Id}"/>
     </VerticalStackLayout>
 </ContentPage>

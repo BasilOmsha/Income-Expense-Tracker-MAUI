@@ -1,14 +1,96 @@
-﻿namespace incomeExpensTrckMAUI.ViewModels.Pages
-{
-    [QueryProperty(nameof(Name), nameof(Name))]
-    public class AddExpensePageViewModel : BaseViewModel
-    {
-        string name;
-        public string Name { get => name; set => SetProperty(ref name, value); }
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using incomeExpensTrckMAUI.Models;
+using incomeExpensTrckMAUI.Services;
 
-        public AddExpensePageViewModel()
+namespace incomeExpensTrckMAUI.ViewModels.Pages
+{
+    public partial class AddExpensePageViewModel : BaseViewModel
+    {
+        private readonly ExpenseService expenseService;
+
+        public AddExpensePageViewModel(ExpenseService expenseService)
         {
             Title = "Add an Expense";
+            this.expenseService = expenseService;
+        }
+
+        [ObservableProperty]
+        DateTimeOffset date;
+
+        [ObservableProperty]
+        bool isRefreshing;
+
+        [ObservableProperty]
+        string amount;
+
+        [ObservableProperty]
+        string category;
+
+        [ObservableProperty]
+        string account;
+
+        [ObservableProperty]
+        string location;
+
+        [ObservableProperty]
+        string note;
+
+        [ObservableProperty]
+        string description;
+
+        [RelayCommand]
+        async Task AddExpense()
+        {
+            if (string.IsNullOrEmpty(Amount) || string.IsNullOrEmpty(Category) || string.IsNullOrEmpty(Account))
+            {
+                await Shell.Current.DisplayAlert("Error", "Please fill in all fields", "Ok");
+                return; // return stops the execution of the method
+            }
+            var expense = new Expense
+            {
+                Date = Date,
+                Amount = double.Parse(Amount),
+                Category = Category,
+                Account = Account,
+                Location = Location,
+                Note = Note,
+                Description = Description,
+            };
+
+            expenseService.AddExpense(expense);
+            await Shell.Current.DisplayAlert("Info", expenseService.StatusMessage, "Ok");
+            await ClearFields();
+            await Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        async Task ClearFields()
+        {
+            if (IsLoading)
+                await Task.CompletedTask;
+            try
+            {
+                Date = DateTimeOffset.Now;
+                Amount = string.Empty;
+                Category = string.Empty;
+                Account = string.Empty;
+                Location = string.Empty;
+                Note = string.Empty;
+                Description = string.Empty;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                IsLoading = false;
+                IsRefreshing = false;
+            }
+
+            await Task.CompletedTask;
         }
     }
 }

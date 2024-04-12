@@ -3,9 +3,11 @@ using CommunityToolkit.Mvvm.Input;
 using incomeExpensTrckMAUI.Models;
 using incomeExpensTrckMAUI.Services;
 using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
+using MongoDB.Bson;
 using MvvmHelpers.Commands;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Web;
 
 namespace incomeExpensTrckMAUI.ViewModels.Pages
 {
@@ -21,35 +23,28 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             Title = "Exp. Page";
             //GenerateDummyExpenses();
             //AddCommand = new AsyncCommand(AddExpense);
+            GetExpenseList();
             this.expenseService = expenseService;
         }
+        [ObservableProperty]
+        bool isRefreshing;
 
         [RelayCommand]
-        async Task GetExpenseDetail(Expense expense)
+        async Task NavToAndGetExpenseDetail(string id)
         {
-            if (expense == null) return;
+            if (id == string.Empty) return;
 
-            await Shell.Current.GoToAsync(nameof(ExpenseDetailPageView), true, new Dictionary<string, object>
-            {
-                {nameof(Expense), expense}
-            });
+            await Shell.Current.GoToAsync($"{nameof(ExpenseDetailPageView)}?Id={id}", true);
         }
 
         [RelayCommand]
         async Task NavToAddExpense()
         {
-            /*var name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of coffee");
-            var roaster = await App.Current.MainPage.DisplayPromptAsync("Roaster", "Roaster of coffee");
-            await CoffeeService.AddCoffee(name, roaster);
-            await Refresh();*/
 
             var route = $"{nameof(AddExpensePageView)}?Amount=200";
             await Shell.Current.GoToAsync(route);
 
         }
-
-        [ObservableProperty]
-        bool isRefreshing;
 
         [RelayCommand]
         async Task GetExpenseList()
@@ -75,6 +70,6 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
                 IsLoading = false;
                 IsRefreshing = false;
             }
-        }
+        } 
     }
 }
