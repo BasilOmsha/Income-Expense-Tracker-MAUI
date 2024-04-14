@@ -32,7 +32,7 @@
              RefreshColor="{StaticResource PrimaryColor}"
              Grid.RowSpan="2">
             <!-- Expense List here -->
-            <components:ExpenseListComponent Grid.Row="1" BindingContext="{Binding Expenses}"/>
+            <components:ExpenseListComponent Grid.Row="1" BindingContext="{Binding}"/>
         </RefreshView>
     </Grid>
 </ContentPage>

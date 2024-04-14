@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:styles="clr-namespace:incomeExpensTrckMAUI.Views.Pages.ExpensePages.Styles"
              xmlns:viewmodel="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
+             xmlns:datecoverter="clr-namespace:incomeExpensTrckMAUI.Helpers"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              x:Class="incomeExpensTrckMAUI.Views.Pages.ExpensePages.ExpenseDetailPageView"
              x:DataType="viewmodel:ExpenseDetailPageViewModel"
@@ -12,6 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <styles:AddExpensePageStyles />
             </ResourceDictionary.MergedDictionaries>
+            <datecoverter:DateConverter x:Key="StringToDateTime"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <Shell.TitleView>
@@ -19,70 +21,81 @@
             <Label Text="{Binding Title}" Style="{StaticResource TitleLabelStyle}"/>
         </StackLayout>
     </Shell.TitleView>
-    <VerticalStackLayout>
-        <Label Text="View And Edit Your Expenses" Margin="0,15,0,15" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Subtitle" FontAttributes="Bold"/>
-        <Grid Style="{StaticResource Layoutgrid}">
-            <Label Text="Date" VerticalOptions="Center"/>
-            <!--<Label Text="{Binding Expense.Date, StringFormat='{0:dd.MM.yyyy}'}" Grid.Column="1"/>-->
-            <DatePicker Date="{Binding Expense.Date, Mode=TwoWay}" Format="{}dd.MM.yyyy" Grid.Column="1"/>
-        </Grid>
-        <Grid Style="{StaticResource Layoutgrid}">
-            <Label Text="Amount" VerticalOptions="Center"/>
-            <Entry Text="{Binding Expense.Amount}" Placeholder="Amount" Grid.Column="1" Keyboard="Numeric"/>
-        </Grid>
-        <Grid Style="{StaticResource Layoutgrid}">
-            <Label Text="Catagory" VerticalOptions="Center"/>
-            <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
-            <Picker x:Name="catagoryPicker" Title="Select a catagory" Grid.Column="1" SelectedItem="{Binding Expense.Category}" >
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Groceries</x:String>
-                        <x:String>Social Life</x:String>
-                        <x:String>Pets</x:String>
-                        <x:String>Transport</x:String>
-                        <x:String>Culture</x:String>
-                        <x:String>Household</x:String>
-                        <x:String>Clothes</x:String>
-                        <x:String>Beauty</x:String>
-                        <x:String>Health</x:String>
-                        <x:String>Education</x:String>
-                        <x:String>Gifts</x:String>
-                        <x:String>Other</x:String>
-                        <x:String>Add</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-        </Grid>
-        <Grid Style="{StaticResource Layoutgrid}">
-            <Label Text="Account" VerticalOptions="Center"/>
-            <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
-            <Picker x:Name="accountPicker" Title="Select an account" Grid.Column="1" SelectedItem="{Binding Expense.Account}">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Cash</x:String>
-                        <x:String>Bank Accounts</x:String>
-                        <x:String>Card</x:String>
-                        <x:String>Add</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-        </Grid>
-        <Grid Style="{StaticResource Layoutgrid}">
-            <Label Text="Location" VerticalOptions="Center"/>
-            <Entry Text="{Binding Expense.Location}" Placeholder="Location" Grid.Column="1" Keyboard="Default"/>
-        </Grid>
-        <Grid Style="{StaticResource Layoutgrid}">
-            <Label Text="Note" VerticalOptions="Center"/>
-            <Entry Text="{Binding Expense.Note}" Placeholder="Note" Grid.Column="1" Keyboard="Default"/>
-        </Grid>
-        <Grid Style="{StaticResource Layoutgrid}">
-            <Label Text="Description" VerticalOptions="Center"/>
-            <Editor AutoSize="TextChanges" Text="{Binding Expense.Description}" Placeholder="Description" Grid.Column="1" Keyboard="Default"/>
-        </Grid>
-        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" />
-        <Button Grid.Row="7" Text="Update" Style="{StaticResource ButtonOutline}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExpenseDetailPageViewModel}}, 
-            Path=UpdateExpenseCommand }" CommandParameter="{Binding Expense.Id}"/>
-        <Button Grid.Row="7" Text="Delete" Style="{StaticResource ButtonOutline}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExpenseDetailPageViewModel}}, 
-            Path=DeleteExpenseCommand }" CommandParameter="{Binding Expense.Id}"/>
-    </VerticalStackLayout>
+    <RefreshView Command="{Binding RefreshFieldsCommand}"
+                IsRefreshing="{Binding IsRefreshing}"
+                RefreshColor="{StaticResource PrimaryColor}">
+        <ScrollView>
+            <VerticalStackLayout>
+                <Label Text="View And Edit Your Expenses" Margin="0,15,0,15" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Subtitle" FontAttributes="Bold"/>
+                <!--Id row for testing-->
+                <!--<Grid Style="{StaticResource Layoutgrid}">
+                    <Label Text="{Binding EditableExpense.Id}" Grid.ColumnSpan="2"/>
+                </Grid>-->
+                <Grid Style="{StaticResource Layoutgrid}">
+                    <Label Text="Date" VerticalOptions="Center"/>
+                    <!--<Label Text="{Binding Expense.Date, StringFormat='{0:dd.MM.yyyy}'}" Grid.Column="1"/>-->
+                    <!--<DatePicker x:Name="datePicker" Date="{Binding Date, Mode=TwoWay}" Format="dd.MM.yyyy" Grid.Column="1"/>-->
+                    <DatePicker Date="{Binding EditableExpense.Date, Converter={StaticResource StringToDateTime}}" Format="{}dd.MM.yyyy" Grid.Column="1"/>
+                </Grid>
+                <Grid Style="{StaticResource Layoutgrid}">
+                    <Label Text="Amount" VerticalOptions="Center"/>
+                    <Entry Text="{Binding EditableExpense.Amount}" Placeholder="Amount" Grid.Column="1" Keyboard="Numeric"/>
+                </Grid>
+                <Grid Style="{StaticResource Layoutgrid}">
+                    <Label Text="Catagory" VerticalOptions="Center"/>
+                    <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                    <Picker x:Name="catagoryPicker" Title="Select a catagory" Grid.Column="1" SelectedItem="{Binding EditableExpense.Category}" >
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Groceries</x:String>
+                                <x:String>Social Life</x:String>
+                                <x:String>Pets</x:String>
+                                <x:String>Transport</x:String>
+                                <x:String>Culture</x:String>
+                                <x:String>Household</x:String>
+                                <x:String>Clothes</x:String>
+                                <x:String>Beauty</x:String>
+                                <x:String>Health</x:String>
+                                <x:String>Education</x:String>
+                                <x:String>Gifts</x:String>
+                                <x:String>Other</x:String>
+                                <x:String>Add</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+                <Grid Style="{StaticResource Layoutgrid}">
+                    <Label Text="Account" VerticalOptions="Center"/>
+                    <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                    <Picker x:Name="accountPicker" Title="Select an account" Grid.Column="1" SelectedItem="{Binding EditableExpense.Account}">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Cash</x:String>
+                                <x:String>Bank Accounts</x:String>
+                                <x:String>Card</x:String>
+                                <x:String>Add</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
+                <Grid Style="{StaticResource Layoutgrid}">
+                    <Label Text="Location" VerticalOptions="Center"/>
+                    <Entry Text="{Binding EditableExpense.Location}" Placeholder="Location" Grid.Column="1" Keyboard="Default"/>
+                </Grid>
+                <Grid Style="{StaticResource Layoutgrid}">
+                    <Label Text="Note" VerticalOptions="Center"/>
+                    <Entry Text="{Binding EditableExpense.Note}" Placeholder="Note" Grid.Column="1" Keyboard="Default"/>
+                </Grid>
+                <Grid Style="{StaticResource Layoutgrid}">
+                    <Label Text="Description" VerticalOptions="Center"/>
+                    <Editor AutoSize="TextChanges" Text="{Binding EditableExpense.Description}" Placeholder="Description" Grid.Column="1" Keyboard="Default"/>
+                </Grid>
+                <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" />
+                <Button Grid.Row="7" Text="Update" Style="{StaticResource ButtonOutline}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExpenseDetailPageViewModel}}, 
+            Path=UpdateExpenseCommand }" CommandParameter="{Binding EditableExpense.Id}"/>
+                <Button Grid.Row="7" Text="Delete" Style="{StaticResource ButtonOutline}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExpenseDetailPageViewModel}}, 
+            Path=DeleteExpenseCommand }" CommandParameter="{Binding EditableExpense.Id}"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
 </ContentPage>

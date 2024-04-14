@@ -9,9 +9,4 @@ public partial class ExpenseDetailPageView : ContentPage
 		InitializeComponent();
         BindingContext = expenseDetailPageViewModel;
     }
-
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
-    {
-        base.OnNavigatedTo(args);
-    }
 }

@@ -27,7 +27,7 @@
                     <Grid Style="{StaticResource Layoutgrid}">
                         <Label Text="Date" VerticalOptions="Center"/>
                         <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
-                        <DatePicker x:Name="datePicker" Date="{Binding Date}" Format="dd.MM.yyyy" Grid.Column="1"/>
+                        <DatePicker x:Name="datePicker" Date="{Binding Date, Mode=TwoWay}" Format="dd.MM.yyyy" Grid.Column="1"/>
                     </Grid>
                     <Grid Style="{StaticResource Layoutgrid}">
                         <Label Text="Amount" VerticalOptions="Center"/>

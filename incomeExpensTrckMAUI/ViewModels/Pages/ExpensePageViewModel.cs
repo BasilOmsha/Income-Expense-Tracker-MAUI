@@ -23,7 +23,8 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             Title = "Exp. Page";
             //GenerateDummyExpenses();
             //AddCommand = new AsyncCommand(AddExpense);
-            GetExpenseList();
+            //GetExpenseList();
+            Expenses.Clear();
             this.expenseService = expenseService;
         }
         [ObservableProperty]
@@ -41,7 +42,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         async Task NavToAddExpense()
         {
 
-            var route = $"{nameof(AddExpensePageView)}?Amount=200";
+            var route = nameof(AddExpensePageView);
             await Shell.Current.GoToAsync(route);
 
         }

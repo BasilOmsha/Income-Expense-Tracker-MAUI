@@ -16,6 +16,7 @@ namespace incomeExpensTrckMAUI.Services
             if (realm != null) return;
 
             realm = Realm.GetInstance(); // Opens a local realm instance
+            //Console.WriteLine($"Realm is located at: {realm.Config.DatabasePath}");
 
         }
 
@@ -24,8 +25,13 @@ namespace incomeExpensTrckMAUI.Services
             try
             {
                 Init();
-                return realm.All<Expense>().ToList();
-                //return expenses;
+                var expenses = realm.All<Expense>().ToList();
+                Console.WriteLine($"Fetched {expenses.Count}  {expenses} expenses from the database.");
+                foreach (var expense in expenses)
+                {
+                    Console.WriteLine($"Expense: {expense.Date}");
+                }
+                return expenses;
             }
             catch (Exception)
             {
@@ -112,6 +118,11 @@ namespace incomeExpensTrckMAUI.Services
                 var realm = Realm.GetInstance();
                 if (realm == null) return null;
                 var expenseToShow = realm.All<Expense>().FirstOrDefault(d => d.Id == id);
+                Console.WriteLine($"Fetched {expenseToShow} expense from the database.");
+                if (expenseToShow != null)
+                {
+                       Console.WriteLine($"The one Expense: {expenseToShow.Date}");
+                }
                 return expenseToShow;
             }
             catch (Exception)
@@ -122,27 +133,28 @@ namespace incomeExpensTrckMAUI.Services
             return null;
         }
 
-        public string UpdateExpense(string id, Expense expense)
+        public string UpdateExpense(Expense editedExpense)
         {
             Init();
             // open a thread-safe transaction
             using var transaction = realm.BeginWrite();
             try
             {
-                var expenseToUpdate = realm.All<Expense>().FirstOrDefault(d => d.Id == id);
+                var expenseToUpdate = realm.All<Expense>().FirstOrDefault(d => d.Id == editedExpense.Id);
                 if (expenseToUpdate != null)
                 {
                     try
                     {
                         realm.WriteAsync(() =>
                         {
-                            expenseToUpdate.Date = expense.Date;
-                            expenseToUpdate.Amount = expense.Amount;
-                            expenseToUpdate.Category = expense.Category;
-                            expenseToUpdate.Account = expense.Account;
-                            expenseToUpdate.Location = expense.Location;
-                            expenseToUpdate.Note = expense.Note;
-                            expenseToUpdate.Description = expense.Description;
+                            //expenseToUpdate.Date = editedExpense.Date;
+                            expenseToUpdate.Date = editedExpense.Date.ToString();
+                            expenseToUpdate.Amount = editedExpense.Amount;
+                            expenseToUpdate.Category = editedExpense.Category;
+                            expenseToUpdate.Account = editedExpense.Account;
+                            expenseToUpdate.Location = editedExpense.Location;
+                            expenseToUpdate.Note = editedExpense.Note;
+                            expenseToUpdate.Description = editedExpense.Description;
                         });
 
                         

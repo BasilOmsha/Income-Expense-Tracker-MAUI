@@ -18,10 +18,13 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         }
 
         [ObservableProperty]
-        Expense expense;
+        Expense editableExpense;
 
         [ObservableProperty]
         string id;
+
+        [ObservableProperty]
+        bool isRefreshing;
 
         [RelayCommand]
         async Task DeleteExpense(string id)
@@ -32,23 +35,12 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
                 return;
             }
 
-            //var expense = Expenses.FirstOrDefault(e => e.Id == id);
-            //if (expense == null)
-            //{
-            //    await Shell.Current.DisplayAlert("Error", "Try again", "Ok");
-            //    return;
-            //}
-
             var confirm = await Shell.Current.DisplayAlert("Warning", "Are you sure you want to delete this expense?", "Yes", "No");
             if (!confirm) return;
 
             expenseService.DeleteExpense(id);
             await Shell.Current.DisplayAlert("Info", expenseService.StatusMessage, "Ok");
             await Shell.Current.GoToAsync("..");
-
-            //Expenses.Remove(expense);
-            //expenseService.DeleteExpense(id);
-            //await Shell.Current.DisplayAlert("Info", expenseService.StatusMessage, "Ok");
         }
 
         [RelayCommand]
@@ -60,28 +52,60 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
                 return;
             }
 
-            var expense = new Expense
-            {
-                Date = Expense.Date,
-                Amount = Expense.Amount,
-                Category = Expense.Category,
-                Account = Expense.Account,
-                Location = Expense.Location,
-                Note = Expense.Note,
-                Description = Expense.Description,
-            };
-
             var confirm = await Shell.Current.DisplayAlert("Warning", "Are you sure you want to update this expense?", "Yes", "No");
             if (!confirm) return;
-
-            expenseService.UpdateExpense(id, expense);
+            Console.WriteLine($"The new date: {EditableExpense.Date}");
+            expenseService.UpdateExpense(EditableExpense);
             await Shell.Current.DisplayAlert("Info", expenseService.StatusMessage, "Ok");
+            await Shell.Current.GoToAsync("..");
         }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             Id = HttpUtility.UrlDecode(query[nameof(Id)].ToString());
-            Expense = ExpenseService.GetExpense(Id);
+            Expense originalExpense = ExpenseService.GetExpense(Id);
+            EditableExpense = CloneExpense(originalExpense);
+          
+        }
+
+        private Expense CloneExpense(Expense originalExpense)
+        {
+            Console.WriteLine($"The date: {originalExpense.Date}");
+            return new Expense
+            {
+                Id = originalExpense.Id,
+                Date = originalExpense.Date,
+                Amount = originalExpense.Amount,
+                Category = originalExpense.Category,
+                Account = originalExpense.Account,
+                Location = originalExpense.Location,
+                Note = originalExpense.Note,
+                Description = originalExpense.Description,
+            };
+        }
+
+        [RelayCommand]
+        async Task RefreshFields()
+        {
+            //if (IsLoading)
+            //    await Task.CompletedTask;
+            //Debug.WriteLine("ClearFields command executed.");
+            try
+            {
+                EditableExpense = CloneExpense(ExpenseService.GetExpense(Id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                //IsLoading = false;
+                IsRefreshing = false;
+            }
+
+            //await Task.CompletedTask;
         }
     }
 }
