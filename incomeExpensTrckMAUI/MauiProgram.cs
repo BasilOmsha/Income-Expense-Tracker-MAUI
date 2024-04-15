@@ -4,6 +4,7 @@ using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
 using incomeExpensTrckMAUI.ViewModels.Pages;
 using incomeExpensTrckMAUI.Services;
 using incomeExpensTrckMAUI.Handlers;
+using incomeExpensTrckMAUI.Views.Pages.MainPages;
 
 namespace incomeExpensTrckMAUI
 {
@@ -33,7 +34,7 @@ namespace incomeExpensTrckMAUI
         /* Registering dependencies with extension methods. This all */
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
         {
-            //mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
+            mauiAppBuilder.Services.AddSingleton<MainPageViewModel>();
             mauiAppBuilder.Services.AddSingleton<ExpensePageViewModel>(); // Singleton means that a single instance of the service is created and shared. Meaning that the same instance is used by all consumers.
             mauiAppBuilder.Services.AddSingleton<AddExpensePageViewModel>(); // Transient means that a new instance of the service is created each time it is requested.
             mauiAppBuilder.Services.AddTransient<ExpenseDetailPageViewModel>();
@@ -46,7 +47,7 @@ namespace incomeExpensTrckMAUI
 
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
         {
-            //mauiAppBuilder.Services.AddSingleton<MainPageView>();
+            mauiAppBuilder.Services.AddSingleton<MainPageView>();
             mauiAppBuilder.Services.AddSingleton<ExpensePageView>();
             mauiAppBuilder.Services.AddSingleton<AddExpensePageView>();
             mauiAppBuilder.Services.AddTransient<ExpenseDetailPageView>();

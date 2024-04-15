@@ -10,7 +10,6 @@
     Shell.NavBarIsVisible="True"
     DisabledColor="Grey"
     UnselectedColor="DarkGrey">
-    
     <TabBar>
         <!--<Tab Title="MainPage"
              Icon="home.png">
@@ -33,19 +32,24 @@
             Route="MainPage"
             Icon="home.png"
          />-->
-        <ShellContent
+        <Tab IsEnabled="False" Title="Expense Page" Icon="receipt_long.png" >
+            <ShellContent
             Title="ExpensePage"
             ContentTemplate="{DataTemplate expenseview:ExpensePageView}"
             Route="ExpensePage"
-            Icon="receipt_long.png"
-        />
-        <ShellContent
+            />
+        </Tab>
+        <Tab IsEnabled="False" Icon="home.png" Title="Main Page">
+            <ShellContent
             Title="MainPage"
-            Icon="home.png"
+            ContentTemplate="{DataTemplate mainview:MainPageView}"
+            Route="ExpensePage"
          />
-        <ShellContent
+        </Tab>
+        <Tab IsEnabled="False" Icon="map.png" Title="Expense Location">
+            <ShellContent
             Title="Expense Location"
-            Icon="map.png"
         />
+        </Tab>
     </TabBar>
 </Shell>
