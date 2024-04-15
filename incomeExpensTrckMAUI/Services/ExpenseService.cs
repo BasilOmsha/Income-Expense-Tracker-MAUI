@@ -29,7 +29,7 @@ namespace incomeExpensTrckMAUI.Services
                 Console.WriteLine($"Fetched {expenses.Count}  {expenses} expenses from the database.");
                 foreach (var expense in expenses)
                 {
-                    Console.WriteLine($"Expense: {expense.Date}");
+                    Console.WriteLine($"Expense: {expense.Day}");
                 }
                 return expenses;
             }
@@ -148,7 +148,9 @@ namespace incomeExpensTrckMAUI.Services
                         realm.WriteAsync(() =>
                         {
                             //expenseToUpdate.Date = editedExpense.Date;
-                            expenseToUpdate.Date = editedExpense.Date.ToString();
+                            expenseToUpdate.Day = editedExpense.Day;
+                            expenseToUpdate.Month = editedExpense.Month;
+                            expenseToUpdate.Year = editedExpense.Year;
                             expenseToUpdate.Amount = editedExpense.Amount;
                             expenseToUpdate.Category = editedExpense.Category;
                             expenseToUpdate.Account = editedExpense.Account;
