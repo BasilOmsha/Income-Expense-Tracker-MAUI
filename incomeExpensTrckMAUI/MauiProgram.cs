@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
 using incomeExpensTrckMAUI.ViewModels.Pages;
 using incomeExpensTrckMAUI.Services;
+using incomeExpensTrckMAUI.Handlers;
 
 namespace incomeExpensTrckMAUI
 {
@@ -21,7 +22,12 @@ namespace incomeExpensTrckMAUI
                 .RegisterViews()
                 .RegisterServices()
                 .RegisterViewModels()
-
+                .ConfigureMauiHandlers(handlers =>
+                {
+#if __ANDROID__
+                    handlers.AddHandler(typeof(RefreshView), typeof(Handlers.CustomRefreshViewHandler));
+#endif
+                })
                 .Build();
 
         /* Registering dependencies with extension methods. This all */

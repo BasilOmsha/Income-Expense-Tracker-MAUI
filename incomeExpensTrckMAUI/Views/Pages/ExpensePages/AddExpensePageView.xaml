@@ -20,7 +20,7 @@
     <ContentPage.Content>
         <RefreshView Command="{Binding ClearFieldsCommand}"
                         IsRefreshing="{Binding IsRefreshing}"
-                        RefreshColor="{StaticResource PrimaryColor}">
+                        RefreshColor="#502bd4">
             <ScrollView>
                 <VerticalStackLayout>
                     <Label Text="Add Your New Expense" Margin="0,15,0,15" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Subtitle" FontAttributes="Bold"/>

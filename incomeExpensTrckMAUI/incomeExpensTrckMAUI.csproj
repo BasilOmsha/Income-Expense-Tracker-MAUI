@@ -1,7 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>
+		<!--<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>-->
+		<TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+		<UseMaui>True</UseMaui>
+		<MauiVersion>8.0.2</MauiVersion>
 		<!--<targetframeworks condition="$([msbuild]::isosplatform('windows'))">$(targetframeworks);net7.0-windows10.0.19041.0</targetframeworks>-->
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
@@ -67,6 +70,8 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Realm" Version="11.7.0" />
 		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 	</ItemGroup>
 
 	<!-- 

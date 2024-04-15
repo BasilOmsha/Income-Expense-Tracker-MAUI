@@ -29,7 +29,7 @@
         <!--<Button Style="{StaticResource AddExpenseButtonStyle}" Command="{Binding GetExpenseListCommand}" IsEnabled="{Binding IsNotLoading}" Text="Fetch Expenses"  Grid.Row="0"/>-->
         <RefreshView Command="{Binding GetExpenseListCommand}"
              IsRefreshing="{Binding IsRefreshing}"
-             RefreshColor="{StaticResource PrimaryColor}"
+             RefreshColor="#502bd4"
              Grid.RowSpan="2">
             <!-- Expense List here -->
             <components:ExpenseListComponent Grid.Row="1" BindingContext="{Binding}"/>
