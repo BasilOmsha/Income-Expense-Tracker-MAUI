@@ -18,7 +18,7 @@
         </Setter>
     </Style>
     <Style x:Key="DateLayoutgrid" TargetType="Grid">
-        <Setter Property="Padding" Value="10"/>
+        <!--<Setter Property="Padding" Value="10"/>-->
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="Margin" Value="0,10,0,10"/>
         <Setter Property="ColumnDefinitions">
@@ -35,7 +35,7 @@
         <Setter Property="Padding" Value="10"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="Margin" Value="0,10,0,10"/>
-        <Setter Property="ColumnDefinitions">
+        <Setter Property="RowDefinitions">
             <Setter.Value>
                 <RowDefinitionCollection>
                     <RowDefinition Height="Auto"/>
