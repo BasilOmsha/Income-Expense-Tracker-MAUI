@@ -5,6 +5,7 @@ using incomeExpensTrckMAUI.ViewModels.Pages;
 using incomeExpensTrckMAUI.Services;
 using incomeExpensTrckMAUI.Handlers;
 using incomeExpensTrckMAUI.Views.Pages.MainPages;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace incomeExpensTrckMAUI
 {
@@ -15,6 +16,7 @@ namespace incomeExpensTrckMAUI
                 .UseMauiApp<App>()
                 // Initialize the .NET MAUI Community Toolkit by adding the below line of code
                 .UseMauiCommunityToolkit()
+                .UseSkiaSharp(true)
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

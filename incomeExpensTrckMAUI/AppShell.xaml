@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mainview="clr-namespace:incomeExpensTrckMAUI.Views.Pages.MainPages"
+    xmlns:mapview="clr-namespace:incomeExpensTrckMAUI.Views.Pages.MapsPages"
     xmlns:expenseview="clr-namespace:incomeExpensTrckMAUI.Views.Pages.ExpensePages"
     Shell.FlyoutBehavior="Disabled"
     Shell.TabBarIsVisible="True"
@@ -11,28 +12,7 @@
     DisabledColor="Grey"
     UnselectedColor="DarkGrey">
     <TabBar>
-        <!--<Tab Title="MainPage"
-             Icon="home.png">
-            <ShellContent
-                Title="MainPage"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage" 
-                Icon="dotnet_bot.png"
-             />
-            <ShellContent
-                Title="NewPage1"
-                ContentTemplate="{DataTemplate v:NewPage1}"
-                Route="NewPage1"
-                Icon="dotnet_bot.png"
-             />
-        </Tab>-->
-        <!--<ShellContent
-            Title="MainPage"
-            ContentTemplate="{DataTemplate mainview:MainPageView}"
-            Route="MainPage"
-            Icon="home.png"
-         />-->
-        <Tab IsEnabled="False" Title="Expense Page" Icon="receipt_long.png" >
+        <Tab IsEnabled="True" Title="Expense Page" Icon="receipt_long.png" >
             <ShellContent
             Title="ExpensePage"
             ContentTemplate="{DataTemplate expenseview:ExpensePageView}"
@@ -46,9 +26,10 @@
             Route="ExpensePage"
          />
         </Tab>
-        <Tab IsEnabled="False" Icon="map.png" Title="Expense Location">
+        <Tab IsEnabled="True" Icon="map.png" Title="Expense Location">
             <ShellContent
             Title="Expense Location"
+            ContentTemplate="{DataTemplate mapview:MapsPageView}"
         />
         </Tab>
     </TabBar>

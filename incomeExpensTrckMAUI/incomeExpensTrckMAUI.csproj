@@ -66,6 +66,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
+		<PackageReference Include="Mapsui.Maui" Version="4.1.5" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" /> 
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Realm" Version="11.7.0" />
@@ -138,9 +139,13 @@
 	  <MauiXaml Update="Views\Pages\MainPages\Styles\MainPageStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\MapsPages\MapsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Views\Pages\IncomePages\" />
+	  <Folder Include="Views\Pages\MapsPages\Styles\" />
 	</ItemGroup>
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadUnhandledDeviceExceptionincomeExpensTrckMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
