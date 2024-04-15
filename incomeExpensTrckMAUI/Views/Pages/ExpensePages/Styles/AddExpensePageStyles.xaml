@@ -64,4 +64,8 @@
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="TextColor" Value="#fff"/>
     </Style>
+    <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="0,20"/>
+    </Style>
 </ResourceDictionary>

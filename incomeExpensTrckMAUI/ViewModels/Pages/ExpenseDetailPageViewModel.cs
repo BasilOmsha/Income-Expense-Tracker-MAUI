@@ -35,6 +35,12 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         bool isRefreshing;
 
         [RelayCommand]
+        void Cancel()
+        {
+            Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
         async Task DeleteExpense(string id)
         {
             if (id == string.Empty)

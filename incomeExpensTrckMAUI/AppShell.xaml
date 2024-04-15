@@ -39,5 +39,9 @@
             Route="ExpensePage"
             Icon="receipt_long.png"
         />
+        <ShellContent
+            Title="Expense Location"
+            Icon="map.png"
+        />
     </TabBar>
 </Shell>

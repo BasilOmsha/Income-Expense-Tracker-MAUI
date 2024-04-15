@@ -55,7 +55,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\cancel.svg" />
 	  <None Remove="Resources\Images\home.svg" />
+	  <None Remove="Resources\Images\map.svg" />
 	  <None Remove="Resources\Images\receipt_long.svg" />
 	</ItemGroup>
 
