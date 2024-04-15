@@ -27,18 +27,22 @@
                 Icon="dotnet_bot.png"
              />
         </Tab>-->
-        <ShellContent
+        <!--<ShellContent
             Title="MainPage"
             ContentTemplate="{DataTemplate mainview:MainPageView}"
             Route="MainPage"
             Icon="home.png"
-         />
+         />-->
         <ShellContent
             Title="ExpensePage"
             ContentTemplate="{DataTemplate expenseview:ExpensePageView}"
             Route="ExpensePage"
             Icon="receipt_long.png"
         />
+        <ShellContent
+            Title="MainPage"
+            Icon="home.png"
+         />
         <ShellContent
             Title="Expense Location"
             Icon="map.png"

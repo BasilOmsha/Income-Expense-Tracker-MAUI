@@ -127,12 +127,10 @@
 	  <MauiXaml Update="Views\Pages\ExpensePages\Styles\ExpensePageStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\MainPages\Styles\MainPageStyles.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Views\Pages\IncomePages\" />
+	  <Folder Include="Views\Pages\MainPages\Styles\" />
 	</ItemGroup>
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadUnhandledDeviceExceptionincomeExpensTrckMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
