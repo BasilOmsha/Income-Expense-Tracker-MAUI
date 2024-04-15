@@ -13,6 +13,15 @@ namespace incomeExpensTrckMAUI.Models
         [MapTo("date")]
         public string Date { get; set; }
 
+        [MapTo("day")]
+        public string Day { get; set; }
+
+        [MapTo("month")]
+        public string Month { get; set; }
+
+        [MapTo("year")]
+        public string Year { get; set; }
+
         [MapTo("amount")]
         public double Amount { get; set; }
 

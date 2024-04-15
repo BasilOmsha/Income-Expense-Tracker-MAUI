@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using incomeExpensTrckMAUI.Helpers;
 using incomeExpensTrckMAUI.Models;
 using incomeExpensTrckMAUI.Services;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace incomeExpensTrckMAUI.ViewModels.Pages
@@ -9,16 +11,35 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
     public partial class AddExpensePageViewModel : BaseViewModel
     {
         private readonly ExpenseService expenseService;
+        public ObservableCollection<string> YearsList { get; private set; }
+        public ObservableCollection<string> MonthsList { get; private set; }
+        public ObservableCollection<string> DaysList { get; private set; }
 
         public AddExpensePageViewModel(ExpenseService expenseService)
         {
             Title = "Add an Expense";
+
             this.expenseService = expenseService;
-            Date = DateTime.Now;
+            YearsList = new ObservableCollection<string>(dateGenerator.GetYearList(1920));
+            MonthsList = new ObservableCollection<string>(dateGenerator.GetYearMonths(1));
+            DaysList = new ObservableCollection<string>(dateGenerator.GetMonthDays(1));
+
+            Day = DateTime.Now.Day.ToString();
+            Month = DateTime.Now.Month.ToString();
+            Year = DateTime.Now.Year.ToString();
         }
 
+        //[ObservableProperty]
+        //DateTime date;
+
         [ObservableProperty]
-        DateTime date;
+        string day;
+
+        [ObservableProperty]
+        string month;
+
+        [ObservableProperty]
+        string year;
 
         [ObservableProperty]
         bool isRefreshing;
@@ -44,7 +65,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         [RelayCommand]
         async Task AddExpense()
         {
-            if (string.IsNullOrEmpty(Amount) || string.IsNullOrEmpty(Category) || string.IsNullOrEmpty(Account))
+            if (string.IsNullOrEmpty(Day) || string.IsNullOrEmpty(Month) || string.IsNullOrEmpty(Year) || string.IsNullOrEmpty(Amount) || string.IsNullOrEmpty(Category) || string.IsNullOrEmpty(Account))
             {
                 await Shell.Current.DisplayAlert("Error", "Please fill in all fields", "Ok");
                 return; // return stops the execution of the method
@@ -52,7 +73,10 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
 
             var expense = new Expense
             {
-                Date = Date.ToString(),
+                //Date = Date.ToString(),
+                Day = Day,
+                Month = Month,
+                Year = Year,
                 Amount = double.Parse(Amount),
                 Category = Category,
                 Account = Account,
@@ -63,19 +87,19 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
 
             expenseService.AddExpense(expense);
             await Shell.Current.DisplayAlert("Info", expenseService.StatusMessage, "Ok");
-            await ClearFields();
+            ClearFields();
             await Shell.Current.GoToAsync("..");
         }
 
         [RelayCommand]
-        async Task ClearFields()
+        void ClearFields()
         {
-            //if (IsLoading)
-            //    await Task.CompletedTask;
-            //Debug.WriteLine("ClearFields command executed.");
             try
             {
-                Date = DateTime.Now;
+                //Date = DateTime.Now;
+                Day = DateTime.Now.Day.ToString();
+                Month = DateTime.Now.Month.ToString();
+                Year = DateTime.Now.Year.ToString();
                 Amount = string.Empty;
                 Category = string.Empty;
                 Account = string.Empty;
@@ -90,11 +114,8 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             }
             finally
             {
-                //IsLoading = false;
                 IsRefreshing = false;
             }
-
-            //await Task.CompletedTask;
         }
     }
 }

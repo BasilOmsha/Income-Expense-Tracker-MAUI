@@ -17,6 +17,33 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="DateLayoutgrid" TargetType="Grid">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="0,10,0,10"/>
+        <Setter Property="ColumnDefinitions">
+            <Setter.Value>
+                <ColumnDefinitionCollection>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </ColumnDefinitionCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="DateLayoutgrid2" TargetType="Grid">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="0,10,0,10"/>
+        <Setter Property="ColumnDefinitions">
+            <Setter.Value>
+                <RowDefinitionCollection>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </RowDefinitionCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="ButtonOutline" TargetType="Button">
         <Setter Property="FontSize" Value="Subtitle"/>
         <Setter Property="FontAttributes" Value="Bold"/>

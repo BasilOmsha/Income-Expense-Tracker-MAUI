@@ -25,7 +25,12 @@
                         <StackLayout Style="{StaticResource DateStack}" Grid.ColumnSpan="3" Grid.Row="0" Grid.Column="0">
                             <!--<Label Text="{Binding Id}"/>-->
                             <!--for testing-->
-                            <Label Style="{StaticResource DateLabel}" Text="{Binding Date, StringFormat='Date: {0:dd.MM.yyyy}', Converter={StaticResource StringToDateTime}}"/>
+                            <!--<Label Style="{StaticResource DateLabel}" Text="{Binding Date, StringFormat='Date: {0:dd.MM.yyyy}', Converter={StaticResource StringToDateTime}}"/>-->
+                            <HorizontalStackLayout>
+                            <Label Style="{StaticResource DateLabel}" Text="{Binding Day, StringFormat='Date: {0}.'}"/>
+                            <Label Style="{StaticResource DateLabel}" Text="{Binding Month, StringFormat='{0}.'}"/>
+                            <Label Style="{StaticResource DateLabel}" Text="{Binding Year}"/>
+                            </HorizontalStackLayout>
                             <BoxView />
                         </StackLayout>
                         <Label Grid.Row="1" Grid.Column="0" Text="{Binding Category, StringFormat='Catagory: {0:C}'}" />

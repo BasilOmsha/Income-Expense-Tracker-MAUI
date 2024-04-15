@@ -24,11 +24,32 @@
             <ScrollView>
                 <VerticalStackLayout>
                     <Label Text="Add Your New Expense" Margin="0,15,0,15" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Subtitle" FontAttributes="Bold"/>
-                    <Grid Style="{StaticResource Layoutgrid}">
+                    <!--<Grid Style="{StaticResource Layoutgrid}">
                         <Label Text="Date" VerticalOptions="Center"/>
-                        <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                        -->
+                    <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                    <!--
                         <DatePicker x:Name="datePicker" Date="{Binding Date, Mode=TwoWay}" Format="dd.MM.yyyy" Grid.Column="1"/>
+                    </Grid>-->
+                    <!--<Grid Style="{StaticResource Layoutgrid}">-->
+                    <Grid Style="{StaticResource DateLayoutgrid}" >
+                        <Grid Style="{StaticResource DateLayoutgrid2}" Grid.Column="0">
+                            <Label Text="Day" VerticalOptions="Center" Grid.Row="0" HorizontalTextAlignment="Center"/>
+                            <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                            <Picker Margin="5,0,5,0" HorizontalTextAlignment="Center" x:Name="dayPicker" Title="Select a day" Grid.Row="1" ItemsSource="{Binding DaysList}" SelectedItem="{Binding Day}"/>
+                        </Grid>
+                        <Grid Style="{StaticResource DateLayoutgrid2}" Grid.Column="1">
+                            <Label Text="Month" VerticalOptions="Center" Grid.Row="0" HorizontalTextAlignment="Center"/>
+                            <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                            <Picker Margin="5,0,5,0" HorizontalTextAlignment="Center" x:Name="monthPicker" Title="Select a month" Grid.Row="1" ItemsSource="{Binding MonthsList}"  SelectedItem="{Binding Month}" />
+                        </Grid>
+                        <Grid Style="{StaticResource DateLayoutgrid2}" Grid.Column="2">
+                            <Label Text="Year" VerticalOptions="Center" Grid.Row="0" HorizontalTextAlignment="Center"/>
+                            <!--<Entry Placeholder="Enter text here" Grid.Column="1"/>-->
+                            <Picker Margin="5,0,5,0" HorizontalTextAlignment="Center" x:Name="yearPicker" Title="Select a year" Grid.Row="1" ItemsSource="{Binding YearsList}"  SelectedItem="{Binding Year}" />
+                        </Grid>
                     </Grid>
+                    <!--</Grid>-->
                     <Grid Style="{StaticResource Layoutgrid}">
                         <Label Text="Amount" VerticalOptions="Center"/>
                         <Entry Placeholder="Amount" Grid.Column="1" Text="{Binding Amount}" Keyboard="Numeric"/>

@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using incomeExpensTrckMAUI.Helpers;
 using incomeExpensTrckMAUI.Models;
 using incomeExpensTrckMAUI.Services;
 using MongoDB.Bson;
+using System.Collections.ObjectModel;
 using System.Web;
 
 namespace incomeExpensTrckMAUI.ViewModels.Pages
@@ -11,10 +13,16 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
     public partial class ExpenseDetailPageViewModel : BaseViewModel, IQueryAttributable
     {
         private readonly ExpenseService expenseService;
+        public ObservableCollection<string> YearsList { get; private set; }
+        public ObservableCollection<string> MonthsList { get; private set; }
+        public ObservableCollection<string> DaysList { get; private set; }
         public ExpenseDetailPageViewModel(ExpenseService expenseService)
         {
             Title = "Exp. Detail Page";
             this.expenseService = expenseService;
+            YearsList = new ObservableCollection<string>(dateGenerator.GetYearList(1920));
+            MonthsList = new ObservableCollection<string>(dateGenerator.GetYearMonths(1));
+            DaysList = new ObservableCollection<string>(dateGenerator.GetMonthDays(1));
         }
 
         [ObservableProperty]
@@ -74,7 +82,10 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             return new Expense
             {
                 Id = originalExpense.Id,
-                Date = originalExpense.Date,
+                //Date = originalExpense.Date,
+                Day = originalExpense.Day,
+                Month = originalExpense.Month,
+                Year = originalExpense.Year,
                 Amount = originalExpense.Amount,
                 Category = originalExpense.Category,
                 Account = originalExpense.Account,
