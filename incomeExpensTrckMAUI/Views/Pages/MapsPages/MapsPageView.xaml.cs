@@ -1,51 +1,24 @@
+using incomeExpensTrckMAUI.ViewModels.Pages;
+using Mapsui;
+using Mapsui.Projections;
+using Mapsui.UI.Maui;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
+
 namespace incomeExpensTrckMAUI.Views.Pages.MapsPages;
 
 public partial class MapsPageView : ContentPage
 {
-    private CancellationTokenSource _cancelTokenSource;
-    private bool _isCheckingLocation;
-    public MapsPageView()
-	{
-		InitializeComponent();
+    private readonly MapsPageViewModel mapsPageViewModel;
 
-        var mapControl = new Mapsui.UI.Maui.MapControl();
-        mapControl.Map?.Layers.Add(Mapsui.Tiling.OpenStreetMap.CreateTileLayer());
-        Content = mapControl;
-        _ = GetCurrentLocation();
-    }
-
-    public async Task GetCurrentLocation()
+    public MapsPageView(MapsPageViewModel mapsPageViewModel)
     {
-        try
-        {
-            _isCheckingLocation = true;
+        InitializeComponent();
+        this.mapsPageViewModel = mapsPageViewModel;
+        BindingContext = mapsPageViewModel;
 
-            GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+        // Subscribe to MapClicked event
+        mapViewElement.MapClicked += mapsPageViewModel.OnMapClicked;
 
-            _cancelTokenSource = new CancellationTokenSource();
-
-            Location location = await Geolocation.Default.GetLocationAsync(request, _cancelTokenSource.Token);
-
-            if (location != null)
-                Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-        }
-        // Catch one of the following exceptions:
-        //   FeatureNotSupportedException
-        //   FeatureNotEnabledException
-        //   PermissionException
-        catch (Exception ex)
-        {
-            // Unable to get location
-        }
-        finally
-        {
-            _isCheckingLocation = false;
-        }
-    }
-
-    public void CancelRequest()
-    {
-        if (_isCheckingLocation && _cancelTokenSource != null && _cancelTokenSource.IsCancellationRequested == false)
-            _cancelTokenSource.Cancel();
     }
 }

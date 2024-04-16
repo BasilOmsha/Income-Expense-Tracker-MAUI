@@ -91,9 +91,13 @@
                             </Picker.ItemsSource>
                         </Picker>
                     </Grid>
-                    <Grid Style="{StaticResource Layoutgrid}">
+                    <Grid Style="{StaticResource LocationGrid}">
                         <Label Text="Location" VerticalOptions="Center"/>
-                        <Entry Placeholder="Location" Grid.Column="1" Text="{Binding Location}" Keyboard="Default"/>
+                        <Entry Placeholder="Location (Optional)" Grid.Column="1" Text="{Binding Location}" Keyboard="Default"/>
+                        <ImageButton Grid.Column="2"
+                                     Source="pin_drop.png"
+                                     Command="{Binding NavToMapCommand}"
+                                     Style="{StaticResource ImageButtonStyle2}"/>
                     </Grid>
                     <Grid Style="{StaticResource Layoutgrid}">
                         <Label Text="Note" VerticalOptions="Center"/>

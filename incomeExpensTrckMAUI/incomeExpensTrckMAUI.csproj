@@ -61,6 +61,7 @@
 	  <None Remove="Resources\Images\cancel.svg" />
 	  <None Remove="Resources\Images\home.svg" />
 	  <None Remove="Resources\Images\map.svg" />
+	  <None Remove="Resources\Images\pin_drop.svg" />
 	  <None Remove="Resources\Images\receipt_long.svg" />
 	</ItemGroup>
 
@@ -137,6 +138,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\MainPages\Styles\MainPageStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\MapsPages\MapModalView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\MapsPages\MapsPageView.xaml">

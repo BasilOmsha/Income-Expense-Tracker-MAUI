@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using incomeExpensTrckMAUI.Helpers;
 using incomeExpensTrckMAUI.Models;
 using incomeExpensTrckMAUI.Services;
+using incomeExpensTrckMAUI.Views.Pages.MapsPages;
+using Mapsui.UI.Maui;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -11,15 +13,18 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
     public partial class AddExpensePageViewModel : BaseViewModel
     {
         private readonly ExpenseService expenseService;
+        private readonly MapModalViewModel mapModalViewModel;
+
         public ObservableCollection<string> YearsList { get; private set; }
         public ObservableCollection<string> MonthsList { get; private set; }
         public ObservableCollection<string> DaysList { get; private set; }
 
-        public AddExpensePageViewModel(ExpenseService expenseService)
+        public AddExpensePageViewModel(ExpenseService expenseService, MapModalViewModel mapModalViewModel)
         {
             Title = "Add an Expense";
 
             this.expenseService = expenseService;
+            this.mapModalViewModel = mapModalViewModel;
             YearsList = new ObservableCollection<string>(dateGenerator.GetYearList(1920));
             MonthsList = new ObservableCollection<string>(dateGenerator.GetYearMonths(1));
             DaysList = new ObservableCollection<string>(dateGenerator.GetMonthDays(1));
@@ -89,6 +94,12 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             await Shell.Current.DisplayAlert("Info", expenseService.StatusMessage, "Ok");
             ClearFields();
             await Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        async Task NavToMap()
+        {
+            await Shell.Current.GoToAsync(nameof(MapModalView));
         }
 
         [RelayCommand]

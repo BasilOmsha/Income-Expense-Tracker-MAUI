@@ -1,4 +1,5 @@
 ﻿using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
+using incomeExpensTrckMAUI.Views.Pages.MapsPages;
 
 namespace incomeExpensTrckMAUI
 {
@@ -13,6 +14,9 @@ namespace incomeExpensTrckMAUI
 
             Routing.RegisterRoute(nameof(ExpenseDetailPageView),
                 typeof(ExpenseDetailPageView));
+
+            Routing.RegisterRoute(nameof(MapModalView),
+                typeof(MapModalView));
         }
     }
 }

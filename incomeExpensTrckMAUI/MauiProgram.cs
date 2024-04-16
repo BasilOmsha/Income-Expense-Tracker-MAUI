@@ -6,6 +6,7 @@ using incomeExpensTrckMAUI.Services;
 using incomeExpensTrckMAUI.Handlers;
 using incomeExpensTrckMAUI.Views.Pages.MainPages;
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using incomeExpensTrckMAUI.Views.Pages.MapsPages;
 
 namespace incomeExpensTrckMAUI
 {
@@ -40,6 +41,8 @@ namespace incomeExpensTrckMAUI
             mauiAppBuilder.Services.AddSingleton<ExpensePageViewModel>(); // Singleton means that a single instance of the service is created and shared. Meaning that the same instance is used by all consumers.
             mauiAppBuilder.Services.AddSingleton<AddExpensePageViewModel>(); // Transient means that a new instance of the service is created each time it is requested.
             mauiAppBuilder.Services.AddTransient<ExpenseDetailPageViewModel>();
+            mauiAppBuilder.Services.AddTransient<MapsPageViewModel>();
+            mauiAppBuilder.Services.AddTransient<MapModalViewModel>();
 #if DEBUG   
 
             mauiAppBuilder.Logging.AddDebug();
@@ -53,6 +56,9 @@ namespace incomeExpensTrckMAUI
             mauiAppBuilder.Services.AddSingleton<ExpensePageView>();
             mauiAppBuilder.Services.AddSingleton<AddExpensePageView>();
             mauiAppBuilder.Services.AddTransient<ExpenseDetailPageView>();
+            mauiAppBuilder.Services.AddTransient<MapsPageView>();
+            mauiAppBuilder.Services.AddTransient<MapModalView>();
+            mauiAppBuilder.Services.AddSingleton<IGeolocation>(Geolocation.Default);
 #if DEBUG
             mauiAppBuilder.Logging.AddDebug();
 #endif

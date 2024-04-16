@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:mapsui="clr-namespace:Mapsui.UI.Maui;assembly=Mapsui.UI.Maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="incomeExpensTrckMAUI.Views.Pages.MapsPages.MapModalView"
+             Title="MapModalView"
+             Shell.PresentationMode="Modal">
+    <Grid>
+        <mapsui:MapView Grid.Column="1"
+                        x:Name="mapView"
+                        Map="{Binding MapView.Map}"/>
+    </Grid>
+</ContentPage>

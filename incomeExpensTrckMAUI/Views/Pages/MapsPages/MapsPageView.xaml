@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mapsui="clr-namespace:Mapsui.UI.Maui;assembly=Mapsui.UI.Maui"
              x:Class="incomeExpensTrckMAUI.Views.Pages.MapsPages.MapsPageView"
              Title="MapsPageView">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <!-- MapView will be initialized in the code-behind -->
-        <GraphicsView x:Name="mapView" Grid.Row="0" />
+    <Grid >
+        <!--<Button Grid.Column="0"
+            Text="Hitme" 
+            WidthRequest="120"
+            HeightRequest="40"
+            TextColor="White"
+            BackgroundColor="DarkGray"
+            Clicked="Button_Clicked"
+            Margin="0,0,0,0"
+            Padding="0,0,0,0"/>-->
+        <mapsui:MapView Grid.Column="1"
+                        x:Name="mapViewElement"
+                        Map="{Binding MapViewElement.Map}"/>
     </Grid>
 </ContentPage>
