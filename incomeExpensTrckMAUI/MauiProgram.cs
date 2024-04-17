@@ -26,7 +26,7 @@ namespace incomeExpensTrckMAUI
                 .RegisterViews()
                 .RegisterServices()
                 .RegisterViewModels()
-                .ConfigureMauiHandlers(handlers =>
+                .ConfigureMauiHandlers(handlers => //Fixes the issue of the RefreshView not working on Android with .net8
                 {
 #if __ANDROID__
                     handlers.AddHandler(typeof(RefreshView), typeof(Handlers.CustomRefreshViewHandler));

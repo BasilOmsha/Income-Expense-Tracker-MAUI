@@ -113,5 +113,23 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
 
             }
         }
+
+        [RelayCommand]
+        void Refresh()
+        {
+            try
+            {
+                GetExpenseLocations();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                DrawMap();
+            }
+        }
     }
 }
