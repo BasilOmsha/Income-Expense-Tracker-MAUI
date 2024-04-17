@@ -108,7 +108,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
                 Address = location,
                 Scale = 0.7F,
                 Color = c,
-                //Transparency = 0.4F
+                Transparency = 0.4F
             };
             MapViewElement.Pins.Add(myPin);
             PinStored.Add(myPin);
