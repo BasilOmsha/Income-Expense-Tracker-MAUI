@@ -34,6 +34,12 @@ namespace incomeExpensTrckMAUI.Models
         [MapTo("location")]
         public string Location { get; set; }
 
+        [MapTo("latitude")]
+        public string Latitude { get; set; }
+
+        [MapTo("longitude")]
+        public string Longitude { get; set; }
+
         [MapTo("note")]
         public string Note { get; set; }
 

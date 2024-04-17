@@ -6,8 +6,16 @@
              Title="MapModalView"
              Shell.PresentationMode="Modal">
     <Grid>
-        <mapsui:MapView Grid.Column="1"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <mapsui:MapView Grid.Row="0"
                         x:Name="mapView"
                         Map="{Binding MapView.Map}"/>
+        <Button Grid.Row="1"
+                Text="Confirm Location"
+                WidthRequest="300"
+                Command="{Binding ConfirmLocationCommand}"/>
     </Grid>
 </ContentPage>

@@ -93,7 +93,7 @@
                     </Grid>
                     <Grid Style="{StaticResource LocationGrid}">
                         <Label Text="Location" VerticalOptions="Center"/>
-                        <Entry Placeholder="Location (Optional)" Grid.Column="1" Text="{Binding Location}" Keyboard="Default"/>
+                        <Entry Placeholder="Location (Optional)" Grid.Column="1" Text="{Binding Location, Mode=TwoWay}" Keyboard="Default"/>
                         <ImageButton Grid.Column="2"
                                      Source="pin_drop.png"
                                      Command="{Binding NavToMapCommand}"

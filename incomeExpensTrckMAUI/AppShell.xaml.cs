@@ -17,6 +17,9 @@ namespace incomeExpensTrckMAUI
 
             Routing.RegisterRoute(nameof(MapModalView),
                 typeof(MapModalView));
+
+            Routing.RegisterRoute(nameof(AddExpensePageView),
+               typeof(AddExpensePageView));
         }
     }
 }

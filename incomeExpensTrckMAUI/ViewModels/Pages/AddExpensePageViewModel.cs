@@ -7,10 +7,12 @@ using incomeExpensTrckMAUI.Views.Pages.MapsPages;
 using Mapsui.UI.Maui;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Web;
 
 namespace incomeExpensTrckMAUI.ViewModels.Pages
 {
-    public partial class AddExpensePageViewModel : BaseViewModel
+
+    public partial class AddExpensePageViewModel : BaseViewModel, IQueryAttributable
     {
         private readonly ExpenseService expenseService;
         private readonly MapModalViewModel mapModalViewModel;
@@ -19,6 +21,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         public ObservableCollection<string> MonthsList { get; private set; }
         public ObservableCollection<string> DaysList { get; private set; }
 
+        
         public AddExpensePageViewModel(ExpenseService expenseService, MapModalViewModel mapModalViewModel)
         {
             Title = "Add an Expense";
@@ -33,9 +36,6 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             Month = DateTime.Now.Month.ToString();
             Year = DateTime.Now.Year.ToString();
         }
-
-        //[ObservableProperty]
-        //DateTime date;
 
         [ObservableProperty]
         string day;
@@ -62,10 +62,31 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         string location;
 
         [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(Location))]
+        string latitude;
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(Location))]
+        string longitude;
+
+        [ObservableProperty]
         string note;
 
         [ObservableProperty]
         string description;
+
+
+        private void UpdateLocation()
+        {
+            if (!string.IsNullOrEmpty(Latitude) && !string.IsNullOrEmpty(Longitude))
+            {
+                Location = $"{Latitude}, {Longitude}";
+            }
+            else
+            {
+                Location = "";
+            }
+        }
 
         [RelayCommand]
         async Task AddExpense()
@@ -86,6 +107,8 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
                 Category = Category,
                 Account = Account,
                 Location = Location,
+                Latitude = Latitude, 
+                Longitude = Longitude, 
                 Note = Note,
                 Description = Description,
             };
@@ -127,6 +150,21 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             {
                 IsRefreshing = false;
             }
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            //Latitude = HttpUtility.UrlDecode(query[nameof(Latitude)].ToString());
+            //Longitude = HttpUtility.UrlDecode(query[nameof(Longitude)].ToString());
+            Debug.WriteLine($"Received Query Parameters: {string.Join(", ", query.Select(kvp => $"{kvp.Key}: {kvp.Value}"))}");
+            //Expense originalExpense = ExpenseService.GetExpense(Id);
+            //EditableExpense = CloneExpense(originalExpense);
+            if (query.ContainsKey(nameof(Latitude)))
+                Latitude = query[nameof(Latitude)]?.ToString();
+
+            if (query.ContainsKey(nameof(Longitude)))
+                Longitude = query[nameof(Longitude)]?.ToString();
+            UpdateLocation();
         }
     }
 }

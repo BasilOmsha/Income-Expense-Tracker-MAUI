@@ -4,6 +4,9 @@ using Mapsui.UI.Maui;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Diagnostics;
+using CommunityToolkit.Mvvm.Input;
+using Mapsui.Extensions;
+using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
 namespace incomeExpensTrckMAUI.ViewModels.Pages
 {
     public partial class MapModalViewModel : BaseViewModel
@@ -25,9 +28,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         {
             Title = "Add location";
             this.geolocation = geolocation;
-
             MapView = new MapView();
-
             MapInit();
         }
         public async void MapInit()
@@ -130,6 +131,15 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             };
             MapView.Pins.Add(myPin);
             PinStored2.Add(myPin);
+        }
+
+        [RelayCommand]
+        async Task ConfirmLocation()
+        {
+            double latitude = lastClickedLatitude;
+            double longitude = lastClickedLongitude;
+            await Shell.Current.GoToAsync($"..?Latitude={latitude}&Longitude={longitude}", true);
+
         }
     }
 }
