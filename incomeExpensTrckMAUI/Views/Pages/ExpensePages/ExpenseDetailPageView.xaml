@@ -101,7 +101,7 @@
                 </Grid>
                 <Grid Style="{StaticResource Layoutgrid}">
                     <Label Text="Location" VerticalOptions="Center"/>
-                    <Entry Text="{Binding EditableExpense.Location}" Placeholder="Location" Grid.Column="1" Keyboard="Default"/>
+                    <Entry Text="{Binding EditableExpense.Location}" Placeholder="Location" Grid.Column="1" Keyboard="Default" IsEnabled="False" />
                 </Grid>
                 <Grid Style="{StaticResource Layoutgrid}">
                     <Label Text="Note" VerticalOptions="Center"/>
