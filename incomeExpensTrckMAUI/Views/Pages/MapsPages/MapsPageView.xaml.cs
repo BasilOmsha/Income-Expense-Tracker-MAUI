@@ -19,7 +19,7 @@ public partial class MapsPageView : ContentPage
 
         // Subscribe to MapClicked event
         //mapViewElement.MapClicked += mapsPageViewModel.OnMapClicked;
-        mapViewElement.PinClicked += mapsPageViewModel.OnPinClicked;
+        //mapViewElement.PinClicked += mapsPageViewModel.OnPinClicked;
 
     }
 }

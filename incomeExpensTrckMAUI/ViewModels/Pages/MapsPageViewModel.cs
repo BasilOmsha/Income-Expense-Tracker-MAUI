@@ -17,27 +17,13 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         private Location location;
 
         [ObservableProperty]
-        MapView mapViewElement = new();
-
-        //readonly MapControl mapControl = new();
-
-
-        private double lastClickedLatitude = 0.0;
-        private double lastClickedLongitude = 0.0;
-
-        public ObservableCollection<Pin> PinStored = new ObservableCollection<Pin>();
+        MapView mapViewElement;
 
         public ObservableCollection<Expense> ExpenseLocations { get; private set; } = new();
 
         public MapsPageViewModel(IGeolocation geolocation, ExpenseService expenseService)
         {
             Title = "Expense Map";
-
-            //MapControl = new MapControl();
-            //MapViewElement = new Map();
-
-            //MapControl.Map = MapViewElement;
-
             this.geolocation = geolocation;
             this.expenseService = expenseService;
             MapViewElement = new MapView();
@@ -82,21 +68,15 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             var (x, y) = SphericalMercator.FromLonLat(location.Longitude, location.Latitude);
             MapViewElement.Map.Home = n => n.CenterOnAndZoomTo(new MPoint(x, y), n.Resolutions[16]);
 
-            //add handlers
-            MapViewElement.PinClicked += OnPinClicked;
+            
 
             foreach (var expense in ExpenseLocations)
             {
                 AddPin(Convert.ToDouble(expense.Latitude), Convert.ToDouble(expense.Longitude), Colors.Red, expense.Note, expense.Location);
             }
+            //add handlers
+            //MapViewElement.PinClicked += OnPinClicked;
         }
-
-        public void OnPinClicked(object sender, PinClickedEventArgs e)
-        {
-            Debug.WriteLine($"Pin Clicked: {e.Pin.Label}");
-            //Shell.Current.DisplayAlert("Pin Clicked", $"You clicked on {e.Pin.Label}", "Ok");
-        }
-
 
         public void AddPin(double latitude, double longitude, Color c, string note, string location)
         {
@@ -111,7 +91,6 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
                 Transparency = 0.4F
             };
             MapViewElement.Pins.Add(myPin);
-            PinStored.Add(myPin);
         }
 
         void GetExpenseLocations()

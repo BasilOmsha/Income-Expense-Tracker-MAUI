@@ -16,14 +16,14 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         private Location location;
 
         [ObservableProperty]
-        MapView mapView = new();
+        MapView mapView;
 
         //readonly MapControl mapControl = new();
 
         private double lastClickedLatitude = 0.0;
         private double lastClickedLongitude = 0.0;
 
-        public ObservableCollection<Pin> PinStored2 = new ObservableCollection<Pin>();
+        public ObservableCollection<Pin> PinStored = new ObservableCollection<Pin>();
         public MapModalViewModel(IGeolocation geolocation)
         {
             Title = "Add location";
@@ -87,32 +87,32 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
             // Add a pin at the clicked location
             AddPin(lastClickedLatitude, lastClickedLongitude, Colors.Purple);
 
-            if (PinStored2.Count == 1)
+            if (PinStored.Count == 1)
             {
                 // Only one pin stored (curret location with emulator usage), add a new pin
                 AddPin(lastClickedLatitude, lastClickedLongitude, Colors.Purple);
             }
-            else if (PinStored2.Count > 2)
+            else if (PinStored.Count > 2)
             {
                 // More than two pins stored, remove the last two pins
-                Debug.WriteLine("Count is " + PinStored2.Count);
+                Debug.WriteLine("Count is " + PinStored.Count);
 
                 // Retrieve the last two pins
-                var lastPin = PinStored2[^1]; // Using index from end syntax for clarity
-                var secondToLastPin = PinStored2[^2];
+                var lastPin = PinStored[^1]; // Using index from end syntax for clarity
+                var secondToLastPin = PinStored[^2];
 
                 // Remove pins from UI
                 MapView.Pins.Remove(lastPin);
                 MapView.Pins.Remove(secondToLastPin);
 
                 // Remove pins from internal list
-                PinStored2.Remove(lastPin);
-                PinStored2.Remove(secondToLastPin);
+                PinStored.Remove(lastPin);
+                PinStored.Remove(secondToLastPin);
 
                 Debug.WriteLine("Last two pins removed.");
             }
 
-            foreach (var item in PinStored2)
+            foreach (var item in PinStored)
             {
                 Debug.Write("pins " + item.Position);
             }
@@ -130,7 +130,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
                 Color = c,
             };
             MapView.Pins.Add(myPin);
-            PinStored2.Add(myPin);
+            PinStored.Add(myPin);
         }
 
         [RelayCommand]
