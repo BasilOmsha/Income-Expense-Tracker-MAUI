@@ -15,19 +15,17 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
     public partial class AddExpensePageViewModel : BaseViewModel, IQueryAttributable
     {
         private readonly ExpenseService expenseService;
-        private readonly MapModalViewModel mapModalViewModel;
 
         public ObservableCollection<string> YearsList { get; private set; }
         public ObservableCollection<string> MonthsList { get; private set; }
         public ObservableCollection<string> DaysList { get; private set; }
 
         
-        public AddExpensePageViewModel(ExpenseService expenseService, MapModalViewModel mapModalViewModel)
+        public AddExpensePageViewModel(ExpenseService expenseService)
         {
             Title = "Add an Expense";
 
             this.expenseService = expenseService;
-            this.mapModalViewModel = mapModalViewModel;
             YearsList = new ObservableCollection<string>(dateGenerator.GetYearList(1920));
             MonthsList = new ObservableCollection<string>(dateGenerator.GetYearMonths(1));
             DaysList = new ObservableCollection<string>(dateGenerator.GetMonthDays(1));
@@ -154,17 +152,14 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            //Latitude = HttpUtility.UrlDecode(query[nameof(Latitude)].ToString());
-            //Longitude = HttpUtility.UrlDecode(query[nameof(Longitude)].ToString());
             Debug.WriteLine($"Received Query Parameters: {string.Join(", ", query.Select(kvp => $"{kvp.Key}: {kvp.Value}"))}");
-            //Expense originalExpense = ExpenseService.GetExpense(Id);
-            //EditableExpense = CloneExpense(originalExpense);
+
             if (query.ContainsKey(nameof(Latitude)))
                 Latitude = query[nameof(Latitude)]?.ToString();
 
             if (query.ContainsKey(nameof(Longitude)))
                 Longitude = query[nameof(Longitude)]?.ToString();
-            UpdateLocation();
+            UpdateLocation(); // Update the location field
         }
     }
 }
