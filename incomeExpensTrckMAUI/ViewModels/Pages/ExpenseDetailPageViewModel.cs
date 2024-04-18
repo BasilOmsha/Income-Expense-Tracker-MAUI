@@ -68,7 +68,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
 
             var confirm = await Shell.Current.DisplayAlert("Warning", "Are you sure you want to update this expense?", "Yes", "No");
             if (!confirm) return;
-            Console.WriteLine($"The new date: {EditableExpense.Date}");
+            Console.WriteLine($"The new date: {EditableExpense.Day}");
             expenseService.UpdateExpense(EditableExpense);
             await Shell.Current.DisplayAlert("Info", expenseService.StatusMessage, "Ok");
             await Shell.Current.GoToAsync("..");
@@ -84,7 +84,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
 
         private Expense CloneExpense(Expense originalExpense)
         {
-            Console.WriteLine($"The date: {originalExpense.Date}");
+            Console.WriteLine($"The day: {originalExpense.Day}");
             return new Expense
             {
                 Id = originalExpense.Id,

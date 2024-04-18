@@ -10,9 +10,6 @@ namespace incomeExpensTrckMAUI.Models
         [MapTo("_id")]
         public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
 
-        [MapTo("date")]
-        public string Date { get; set; }
-
         [MapTo("day")]
         public string Day { get; set; }
 

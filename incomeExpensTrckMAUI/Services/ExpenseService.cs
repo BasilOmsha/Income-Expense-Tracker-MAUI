@@ -121,7 +121,7 @@ namespace incomeExpensTrckMAUI.Services
                 Console.WriteLine($"Fetched {expenseToShow} expense from the database.");
                 if (expenseToShow != null)
                 {
-                       Console.WriteLine($"The one Expense: {expenseToShow.Date}");
+                       Console.WriteLine($"The one Expense: {expenseToShow.Day}");
                 }
                 return expenseToShow;
             }

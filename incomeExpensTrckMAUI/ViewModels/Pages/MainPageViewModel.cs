@@ -19,7 +19,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         {
             var expense = new Expense
             {
-                Date = DateTimeOffset.Now.ToString(),
+                //Date = DateTimeOffset.Now.ToString(),
                 Amount = 100,
                 Category = "Groceries",
                 Account = "Checking",
