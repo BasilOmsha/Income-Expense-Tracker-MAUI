@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace incomeExpensTrckMAUI.ViewModels;
 
@@ -17,3 +19,27 @@ public partial class BaseViewModel : ObservableObject
 
 }
 
+
+//public partial class BaseViewModel : INotifyPropertyChanged
+//{
+
+//    string _title;
+
+//    public string Title
+//    {
+//        get => _title;
+//        set
+//        {
+//            if (_title == value)
+//                return;
+//            _title = value;
+//            OnPropertyChanged();
+//        }
+//    }
+
+//    public event PropertyChangedEventHandler PropertyChanged;
+//    private void OnPropertyChanged([CallerMemberName] string name = null)
+//    {
+//        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+//    }
+//}
