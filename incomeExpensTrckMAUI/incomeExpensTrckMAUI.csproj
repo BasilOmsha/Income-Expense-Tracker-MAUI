@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<!--<TargetFrameworks>net7.0-android;net7.0-ios</TargetFrameworks>-->
-		<TargetFrameworks>net8.0-android;net8.0-ios</TargetFrameworks>
+		<TargetFrameworks>net8.0-android</TargetFrameworks>
 		<UseMaui>True</UseMaui>
 		<MauiVersion>8.0.2</MauiVersion>
 		<!--<targetframeworks condition="$([msbuild]::isosplatform('windows'))">$(targetframeworks);net7.0-windows10.0.19041.0</targetframeworks>-->
@@ -33,10 +33,10 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-<!-- This PropertyGroup defines specific configuration settings for the Debug build when targeting the net7.0-ios platform with AnyCPU. -->
+	<!-- This PropertyGroup defines specific configuration settings for the Debug build when targeting the net7.0-ios platform with AnyCPU. -->
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-	  <MtouchLink>SdkOnly</MtouchLink>
-	  <MtouchUseLlvm>True</MtouchUseLlvm>
+		<MtouchLink>SdkOnly</MtouchLink>
+		<MtouchUseLlvm>True</MtouchUseLlvm>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -58,22 +58,34 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\cancel.svg" />
-	  <None Remove="Resources\Images\home.svg" />
-	  <None Remove="Resources\Images\map.svg" />
-	  <None Remove="Resources\Images\pin_drop.svg" />
-	  <None Remove="Resources\Images\receipt_long.svg" />
+		<None Remove="Resources\Images\cancel.svg" />
+		<None Remove="Resources\Images\home.svg" />
+		<None Remove="Resources\Images\map.svg" />
+		<None Remove="Resources\Images\pin_drop.svg" />
+		<None Remove="Resources\Images\receipt_long.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
 		<PackageReference Include="Mapsui.Maui" Version="4.1.5" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" /> 
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Realm" Version="11.7.0" />
 		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.20" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.20" />
+	</ItemGroup>
+
+	<!--
+	iOS 
+	Don't compile C# code whose filename ends with .iOS.cs, or that's located in the 
+	iOS folder or sub-folder of the iOS folder, if you aren't building for iOS.
+	-->
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true">
+		<Compile Remove="**\*.iOS.cs" />
+		<None Include="**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+		<Compile Remove="**\iOS\**\*.cs" />
+		<None Include="**\iOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 	</ItemGroup>
 
 	<!-- 
@@ -101,56 +113,61 @@
 		<Compile Remove="**\Windows\**\*.cs" />
 		<None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 	</ItemGroup>
+
 	<ItemGroup>
-	  <Compile Update="Views\Pages\ExpensePages\Styles\ExpensePageStyles.xaml.cs">
-	    <DependentUpon>ExpensePageStyles.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Pages\ExpensePages\ExpensePageView.xaml.cs">
-	    <DependentUpon>ExpensePageView.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Views\Pages\MainPages\MainPageView.xaml.cs">
-	    <DependentUpon>MainPageView.xaml</DependentUpon>
-	  </Compile>
+		<Compile Update="Views\Pages\ExpensePages\Styles\ExpensePageStyles.xaml.cs">
+			<DependentUpon>ExpensePageStyles.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Pages\ExpensePages\ExpensePageView.xaml.cs">
+			<DependentUpon>ExpensePageView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Pages\MainPages\MainPageView.xaml.cs">
+			<DependentUpon>MainPageView.xaml</DependentUpon>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiXaml Update="Components\ExpenseListComps\ExpenseListComponent.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Components\ExpenseListComps\Styles\ExpenseListCompStyle.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\ExpensePages\AddExpensePageView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\ExpensePages\ExpenseDetailPageView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\ExpensePages\ExpensePageView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\ExpensePages\Styles\AddExpensePageStyles.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\ExpensePages\Styles\ExpensePageStyles.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\MainPages\MainPageView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\MainPages\Styles\MainPageStyles.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\MapsPages\MapModalView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\MapsPages\MapsPageView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="Components\ExpenseListComps\ExpenseListComponent.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Components\ExpenseListComps\Styles\ExpenseListCompStyle.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Pages\ExpensePages\AddExpensePageView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Pages\ExpensePages\ExpenseDetailPageView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Pages\ExpensePages\ExpensePageView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Pages\ExpensePages\Styles\AddExpensePageStyles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Pages\ExpensePages\Styles\ExpensePageStyles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Pages\MainPages\MainPageView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Pages\MainPages\Styles\MainPageStyles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Pages\MapsPages\MapModalView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Views\Pages\MapsPages\MapsPageView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Views\Pages\IncomePages\" />
-	  <Folder Include="Views\Pages\MapsPages\Styles\" />
+		<Folder Include="Views\Pages\IncomePages\" />
+		<Folder Include="Views\Pages\MapsPages\Styles\" />
 	</ItemGroup>
-	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadUnhandledDeviceExceptionincomeExpensTrckMAUIHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties XamarinHotReloadUnhandledDeviceExceptionincomeExpensTrckMAUIHideInfoBar="True" />
+		</VisualStudio>
+	</ProjectExtensions>
 
 </Project>
