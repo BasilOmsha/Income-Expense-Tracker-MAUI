@@ -5,7 +5,6 @@ namespace incomeExpensTrckMAUI.Models
 {
     public partial class Expense : IRealmObject
     {
-        //public ObjectId Id { get; set; } = ObjectId.GenerateNewId();
         [PrimaryKey]
         [MapTo("_id")]
         public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
