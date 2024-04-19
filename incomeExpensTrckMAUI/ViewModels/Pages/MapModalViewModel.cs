@@ -42,7 +42,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         {
             try
             {
-                location = await Geolocation.GetLocationAsync(new GeolocationRequest
+                location = await geolocation.GetLocationAsync(new GeolocationRequest
                 {
                     DesiredAccuracy = GeolocationAccuracy.Best,
                     Timeout = TimeSpan.FromSeconds(30)
