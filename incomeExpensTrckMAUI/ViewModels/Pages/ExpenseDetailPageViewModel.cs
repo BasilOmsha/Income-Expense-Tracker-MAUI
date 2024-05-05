@@ -18,7 +18,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         public ObservableCollection<string> DaysList { get; private set; }
         public ExpenseDetailPageViewModel(ExpenseService expenseService)
         {
-            Title = "Exp. Detail Page";
+            Title = "Exp. Detail Page Maui";
             this.expenseService = expenseService;
             YearsList = new ObservableCollection<string>(dateGenerator.GetYearList(1920));
             MonthsList = new ObservableCollection<string>(dateGenerator.GetYearMonths(1));

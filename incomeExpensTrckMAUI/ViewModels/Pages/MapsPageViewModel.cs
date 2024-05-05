@@ -29,7 +29,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
 
         public MapsPageViewModel(IGeolocation geolocation, ExpenseService expenseService)
         {
-            Title = "Expense Map";
+            Title = "Expense Map Maui";
             this.geolocation = geolocation;
             this.expenseService = expenseService;
             MapViewElement = new MapView();

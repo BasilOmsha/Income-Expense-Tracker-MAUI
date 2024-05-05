@@ -23,7 +23,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         
         public AddExpensePageViewModel(ExpenseService expenseService)
         {
-            Title = "Add an Expense";
+            Title = "Add an Expense Maui";
 
             this.expenseService = expenseService;
             YearsList = new ObservableCollection<string>(dateGenerator.GetYearList(1920));

@@ -12,21 +12,21 @@
     DisabledColor="Grey"
     UnselectedColor="DarkGrey">
     <TabBar>
-        <Tab IsEnabled="True" Title="Expense Page" Icon="receipt_long.png" >
+        <Tab IsEnabled="True" Title="Maui Expense Page" Icon="receipt_long.png" >
             <ShellContent
             Title="ExpensePage"
             ContentTemplate="{DataTemplate expenseview:ExpensePageView}"
             Route="ExpensePage"
             />
         </Tab>
-        <Tab IsEnabled="False" Icon="home.png" Title="Main Page">
+        <Tab IsEnabled="False" Icon="home.png" Title="Maui Main Page">
             <ShellContent
             Title="MainPage"
             ContentTemplate="{DataTemplate mainview:MainPageView}"
             Route="ExpensePage"
          />
         </Tab>
-        <Tab IsEnabled="True" Icon="map.png" Title="Expense Location">
+        <Tab IsEnabled="True" Icon="map.png" Title="Maui Expense Location">
             <ShellContent
             Title="Expense Location"
             ContentTemplate="{DataTemplate mapview:MapsPageView}"

@@ -10,7 +10,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
 
         public MainPageViewModel()
         {
-            Title = "Main Page";
+            Title = "Main Page Maui";
             GenerateDummyExpenses();
             GenerateDummyIncomes();
         }

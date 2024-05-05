@@ -20,7 +20,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         // Implements dependency injection to inject the ExpenseService into the constructor.
         public ExpensePageViewModel(ExpenseService expenseService)
         {
-            Title = "Exp. Page";
+            Title = "Exp. Page Maui";
             //GenerateDummyExpenses();
             //AddCommand = new AsyncCommand(AddExpense);
             //GetExpenseList();

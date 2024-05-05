@@ -28,7 +28,7 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         public ObservableCollection<Pin> PinStored = new ObservableCollection<Pin>();
         public MapModalViewModel(IGeolocation geolocation)
         {
-            Title = "Add location";
+            Title = "Add location Maui";
             this.geolocation = geolocation;
             MapView = new MapView();
             MapInit();
