@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:mapsui="clr-namespace:Mapsui.UI.Maui;assembly=Mapsui.UI.Maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:incomeExpensTrckMAUI.ViewModels.Pages"
              x:Class="incomeExpensTrckMAUI.Views.Pages.MapsPages.MapModalView"
+             x:DataType="vm:MapModalViewModel"
              Title="MapModalView"
              Shell.PresentationMode="Modal">
     <Grid>
@@ -10,7 +12,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <mapsui:MapView Grid.Row="0"
+        <mapsui:MapView  Grid.Row="0"
                         x:Name="mapView"
                         Map="{Binding MapView.Map}"/>
         <Button Grid.Row="1"

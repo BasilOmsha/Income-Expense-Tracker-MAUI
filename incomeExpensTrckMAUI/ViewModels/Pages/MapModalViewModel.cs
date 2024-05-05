@@ -7,6 +7,8 @@ using System.Diagnostics;
 using CommunityToolkit.Mvvm.Input;
 using Mapsui.Extensions;
 using incomeExpensTrckMAUI.Views.Pages.ExpensePages;
+using Mapsui.Widgets.ScaleBar;
+using Mapsui.Widgets;
 namespace incomeExpensTrckMAUI.ViewModels.Pages
 {
     public partial class MapModalViewModel : BaseViewModel
@@ -58,6 +60,8 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         {
             //setup mapsui
             MapView.Map?.Layers.Add(Mapsui.Tiling.OpenStreetMap.CreateTileLayer());
+            MapView.Map.Widgets.Add(new MapInfoWidget(MapView.Map));
+            MapView.Map.Widgets.Add(new ScaleBarWidget(MapView.Map) { TextAlignment = Alignment.Center });
 
             //add a pin
             AddPin(location.Latitude, location.Longitude, Colors.Blue);

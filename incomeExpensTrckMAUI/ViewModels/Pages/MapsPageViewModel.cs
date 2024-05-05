@@ -3,8 +3,12 @@ using CommunityToolkit.Mvvm.Input;
 using incomeExpensTrckMAUI.Models;
 using incomeExpensTrckMAUI.Services;
 using Mapsui;
+using Mapsui.Extensions;
+using Mapsui.Layers;
 using Mapsui.Projections;
 using Mapsui.UI.Maui;
+using Mapsui.Widgets;
+using Mapsui.Widgets.ScaleBar;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -15,6 +19,8 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         private IGeolocation geolocation;
         private readonly ExpenseService expenseService;
         private Location location;
+
+        private MyLocationLayer? _myLocationLayer;
 
         [ObservableProperty]
         MapView mapViewElement;
@@ -58,17 +64,35 @@ namespace incomeExpensTrckMAUI.ViewModels.Pages
         {
             //setup mapsui
             MapViewElement.Map?.Layers.Add(Mapsui.Tiling.OpenStreetMap.CreateTileLayer());
+            MapViewElement.Map.Widgets.Add(new MapInfoWidget(MapViewElement.Map));
+            MapViewElement.Map.Widgets.Add(new ScaleBarWidget(MapViewElement.Map) { TextAlignment = Alignment.Center });
 
             //add a pin
             AddPin(location.Latitude, location.Longitude, Colors.Blue, "Current Location", "Me");
 
+            _myLocationLayer?.Dispose();
+            _myLocationLayer = new MyLocationLayer(MapViewElement.Map)
+            {
+                IsCentered = false,
+            };
+
+            MapViewElement.Map.Layers.Add(_myLocationLayer);
+
+            MapViewElement.Map.Navigator.ZoomToLevel(14);
+
+            //var center = new MPoint(24.478288503698295, 60.97635155698171); // This is the default location I set for the emulator as the location property is not working with the emulator.
+            var center = new MPoint(location.Longitude, location.Latitude);
+            Debug.WriteLine($" {center.X} {center.Y}");
+
+
             //Transform the location to mercator
-
             //navigate to my location
-            var (x, y) = SphericalMercator.FromLonLat(location.Longitude, location.Latitude);
-            MapViewElement.Map.Home = n => n.CenterOnAndZoomTo(new MPoint(x, y), n.Resolutions[16]);
+            //var (x, y) = SphericalMercator.FromLonLat(location.Longitude, location.Latitude);
+            var sphericalMercatorCoordinate = SphericalMercator.FromLonLat(center.X, center.Y).ToMPoint();
+            //MapViewElement.Map.Home = n => n.CenterOnAndZoomTo(new MPoint(x, y), n.Resolutions[16]);
+            MapViewElement.Map.Home = n => n.CenterOnAndZoomTo(sphericalMercatorCoordinate, n.Resolutions[16]);
 
-            
+            _myLocationLayer.UpdateMyLocation(sphericalMercatorCoordinate, true);
 
             foreach (var expense in ExpenseLocations)
             {
