@@ -21,10 +21,14 @@
         </Tab>
         <Tab IsEnabled="True" Icon="home.png" Title="Maui Main Page">
             <ShellContent
-            Title="MainPage"
+            Title="Daily"
             ContentTemplate="{DataTemplate mainview:MainPageView}"
             Route="ExpensePage"
          />
+            <ShellContent Title="Calender" />
+            <ShellContent Title="Monthly" />
+            <ShellContent Title="Summary" />
+            <ShellContent Title="Description" />
         </Tab>
         <Tab IsEnabled="True" Icon="map.png" Title="Maui Expense Location">
             <ShellContent

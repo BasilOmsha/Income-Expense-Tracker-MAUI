@@ -32,20 +32,20 @@
                 <Border Style="{StaticResource TopSummaryBorder}">
                     <Grid  Style="{StaticResource TopSummaryGridStyle}">
                         <!-- Income -->
-                        <StackLayout Grid.Column="0" HorizontalOptions="Start">
+                        <!--<StackLayout Grid.Column="0" HorizontalOptions="Start">
                             <Label Text="Income" />
                             <Label Text="345" />
-                        </StackLayout>
+                        </StackLayout>-->
                         <!-- Expenses -->
                         <StackLayout Grid.Column="1" HorizontalOptions="Center">
                             <Label Text="Exp. Total" />
                             <Label Text="{Binding TotalExpenses, StringFormat='{0:C}'}"/>
                         </StackLayout>
                         <!-- Total -->
-                        <StackLayout Grid.Column="2" HorizontalOptions="End">
+                        <!--<StackLayout Grid.Column="2" HorizontalOptions="End">
                             <Label Text="Total" />
                             <Label Text="100"  />
-                        </StackLayout>
+                        </StackLayout>-->
                     </Grid>
                 </Border>
                 <!-- Scrollable List Content -->
