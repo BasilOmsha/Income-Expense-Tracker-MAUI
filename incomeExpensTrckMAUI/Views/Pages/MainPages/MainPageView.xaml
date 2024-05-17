@@ -23,66 +23,69 @@
         <mct:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent"/>
     </Page.Behaviors>
     <!-- Main Content -->
-    <StackLayout BackgroundColor="#ececec">
-        <!-- Top Summary Section -->
-        <Border Style="{StaticResource TopSummaryBorder}">
-            <Grid  Style="{StaticResource TopSummaryGridStyle}">
-                <!-- Income -->
-                <StackLayout Grid.Column="0" HorizontalOptions="Start">
-                    <Label Text="Income" />
-                    <Label Text="345" />
-                </StackLayout>
-                <!-- Expenses -->
-                <StackLayout Grid.Column="1" HorizontalOptions="Center">
-                    <Label Text="Exp." />
-                    <Label Text="245" />
-                </StackLayout>
-                <!-- Total -->
-                <StackLayout Grid.Column="2" HorizontalOptions="End">
-                    <Label Text="Total" />
-                    <Label Text="100"  />
-                </StackLayout>
-            </Grid>
-        </Border>
-        <!-- Scrollable List Content -->
-        <ScrollView>
-            <StackLayout Style="{StaticResource ListStackLayoutStyle}">
-                
-                <!-- Expenses CollectionView -->
-                <CollectionView ItemsSource="{Binding Expenses}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Expense">
-                            <StackLayout Orientation="Vertical" Spacing="10">
-                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Label Text="{Binding Category}" />
-                                    <Label Text="{Binding Account}" />
-                                    <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
-                                    <!--<Label Text="{Binding Date, StringFormat='{0:dd ddd}'}" />-->
-                                    <!--Customize further as needed-->
-                                </StackLayout>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                
-                <!-- Incomes CollectionView -->
-                <CollectionView ItemsSource="{Binding Incomes}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Income">
-                            <StackLayout Orientation="Horizontal" Spacing="10">
-                                <Label Text="{Binding Category}" />
-                                <Label Text="{Binding Account}" />
-                                <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
-                                <!--<Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}" />-->
-                                <!-- Customize further as needed -->
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                
+    <ContentPage.Content>
+        <RefreshView Command="{Binding ExpensesTotalCommand}"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    RefreshColor="#502bd4">
+            <StackLayout BackgroundColor="#ececec">
+                <!-- Top Summary Section -->
+                <Border Style="{StaticResource TopSummaryBorder}">
+                    <Grid  Style="{StaticResource TopSummaryGridStyle}">
+                        <!-- Income -->
+                        <StackLayout Grid.Column="0" HorizontalOptions="Start">
+                            <Label Text="Income" />
+                            <Label Text="345" />
+                        </StackLayout>
+                        <!-- Expenses -->
+                        <StackLayout Grid.Column="1" HorizontalOptions="Center">
+                            <Label Text="Exp. Total" />
+                            <Label Text="{Binding TotalExpenses, StringFormat='{0:C}'}"/>
+                        </StackLayout>
+                        <!-- Total -->
+                        <StackLayout Grid.Column="2" HorizontalOptions="End">
+                            <Label Text="Total" />
+                            <Label Text="100"  />
+                        </StackLayout>
+                    </Grid>
+                </Border>
+                <!-- Scrollable List Content -->
+                <ScrollView>
+                    <StackLayout Style="{StaticResource ListStackLayoutStyle}">
+                        <!-- Expenses CollectionView -->
+                        <CollectionView ItemsSource="{Binding Expenses}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:Expense">
+                                    <StackLayout Orientation="Vertical" Spacing="10">
+                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                            <Label Text="{Binding Category}" />
+                                            <Label Text="{Binding Account}" />
+                                            <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
+                                            <!--<Label Text="{Binding Date, StringFormat='{0:dd ddd}'}" />-->
+                                            <!--Customize further as needed-->
+                                        </StackLayout>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- Incomes CollectionView -->
+                        <CollectionView ItemsSource="{Binding Incomes}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:Income">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
+                                        <Label Text="{Binding Category}" />
+                                        <Label Text="{Binding Account}" />
+                                        <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}" />
+                                        <!--<Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}" />-->
+                                        <!-- Customize further as needed -->
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </ScrollView>
             </StackLayout>
-        </ScrollView>
-    </StackLayout>
+        </RefreshView>
+    </ContentPage.Content>
 </ContentPage>
     
     

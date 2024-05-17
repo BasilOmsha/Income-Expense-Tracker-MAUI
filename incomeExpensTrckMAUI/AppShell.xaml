@@ -19,7 +19,7 @@
             Route="ExpensePage"
             />
         </Tab>
-        <Tab IsEnabled="False" Icon="home.png" Title="Maui Main Page">
+        <Tab IsEnabled="True" Icon="home.png" Title="Maui Main Page">
             <ShellContent
             Title="MainPage"
             ContentTemplate="{DataTemplate mainview:MainPageView}"
